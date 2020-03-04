@@ -27,4 +27,4 @@ conflict test
 
 hello
 
-コンフリクトよ、起きてくれ
+test_test
