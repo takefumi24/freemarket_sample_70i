@@ -47,7 +47,7 @@ Things you may want to cover:
 |buyer_id|integer|foreign_key: { to_table: :users }
 |which_postage|integer|null: false|
 |delivery_status|integer|null: false|
-|prefecture_id|references|null: false, foreign_key: true|
+|prefecture|integer|null: false|
 |brand_id|references|foreign_key: true|
 |category_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
@@ -61,7 +61,6 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
-- belongs_to :prefecture
 - belongs_to :size
 - belongs_to :condition
 - belongs_to :sending_method
@@ -86,12 +85,11 @@ Things you may want to cover:
 |birth_year|date|null: false|
 |birth_month|date|null: false|
 |birth_day|date|null: false|
-|prefecture_id|references|foreign_key: true|
+|prefecture|integer|null: false|
 |user_id|references|foreign_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to :prefecture
 
 
 # credit_cardsテーブル
@@ -109,15 +107,7 @@ Things you may want to cover:
 
 
 
-# prefecturesテーブル
 
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many :products
-- has_many :profiles
 
 
 # brandsテーブル
