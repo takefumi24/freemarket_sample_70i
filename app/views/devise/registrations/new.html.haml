@@ -1,0 +1,101 @@
+.single-container
+  %header.single-header
+    %h1
+      %figure.single-container__header-icon
+        = link_to root_path do
+          %figure.single-container__header-icon-image
+            = image_tag "logo.png", :size =>'185x49'
+    .progress-bar.signup-bar
+      %ol.clearfix
+        %li.member-page.active
+          会員情報
+          .progress-status
+        %li.address-page
+          住所
+          .progress-status
+        %li.credit-page
+          クレジットカード
+          .progress-status
+        %li.comp-page
+          完了
+          .progress-status
+  // 入力フォーム
+  %main.single-main
+    %section.l-single-container
+      %h2.l-single-head 会員情報入力
+      = form_for(:session, url: registration_path(resource_name), html: {id: "new_user_form",class: 'l-single-inner'}) do |f|
+        -# - if @error&.present?
+        -#   = render partial: "shared/unique_error",locals: {errors: @error}
+        -# - if @temporary&.errors.present?
+        -#   = render partial: "shared/errors_messages",locals: {temporary: @temporary}
+        .l-single-content
+          .form-group
+            = f.label :ニックネーム
+            %span.form-require 必須
+            = f.text_field :nickname, autofocus: true, placeholder: "例) フリマっちょ",required: "required", class: 'input-default'
+          .form-group
+            = f.label :メールアドレス
+            %span.form-require 必須
+            = f.email_field :email, autocomplete: "email", placeholder: "PC・携帯どちらでも可",required: "required", class: "input-default"
+          .form-group
+            = f.label :パスワード
+            %span.form-require 必須
+            = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字",required: "required", class: "input-default"
+          .form-group
+            = f.label :パスワード確認
+            %span.form-require 必須
+            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上の半角英数字",required: "required", class: "input-default"
+          %p.form-info-text ※英字と数字の両方を含めて設定してください
+
+        .l-single-content
+          .form-group
+            %h3.text-left.l-chapter-sub-head 本人確認
+            %p.l-single-text
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .form-group
+            = f.label :お名前（全角）
+            %span.form-require 必須
+            %br/
+            = f.text_field :first_name, placeholder: "例) 振間",required: "required", class: "input-default__name"
+            = f.text_field :last_name, placeholder: "例) 太郎",required: "required", class: "input-default__name"
+          .form-group
+            = f.label :お名前カナ（全角）
+            %span.form-require 必須
+            %br/
+            = f.text_field :first_name_kana, placeholder: "例) フリマ",required: "required", class: "input-default__name"
+            = f.text_field :last_name_kana, placeholder: "例) タロウ",required: "required", class: "input-default__name"
+          .form-group
+            = f.label :生年月日
+            %span.form-require 必須
+            .birth-select-wrap
+              .select-wrap
+                = f.collection_select :birth_year, BirthYearSelect.all,:value,:name, {include_blank: "--"}, {required: "required", class: "select-default"}
+                = fa_icon "angle-down"
+              %span.birth-info 年
+              .select-wrap
+                = f.select :birth_month, [1,2,3,4,5,6,7,8,9,10,11,12], {include_blank: "--"}, {required: "required", class: "select-default"}
+                = fa_icon "angle-down"
+              %span.birth-info 月
+              .select-wrap
+                = f.select :birth_day, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31], {include_blank: "--"}, {required: "required", class: "select-default"}
+                = fa_icon "angle-down"
+              %span.birth-info 日
+            .clearfix
+          %p.form-info-text
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+
+        .l-single-content
+          .form-group
+            %p.l-single-text.text-center
+              「次へ進む」のボタンを押すことにより、
+              %a{href: "/###", target: "_blank"}> 利用規約
+              に同意したものとみなします
+          %button.btn-default.btn-next{type: "submit"} 次へ進む
+          .form-group.text-right
+            %p
+              %a{href: "/###", target: "_blank"}
+                本人情報の登録について
+                %i.fa.fa-angle-right
+
+
+  -# = render "users/user_footer"
