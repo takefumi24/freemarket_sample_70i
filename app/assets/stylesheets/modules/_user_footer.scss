@@ -1,0 +1,36 @@
+.single-footer{
+  width: 456px;
+  height: 150px;
+  margin: 0 auto;
+  padding: 40px 0;
+  text-align: center;
+  z-index: 1;
+  nav {
+    ul {
+      list-style:none;
+      padding: 0;
+      li {
+        color: black;
+        display: inline-block;
+        font-size: 12px;
+        margin: 0 7px;
+        a {
+         display: block;
+         color: #333333;
+         text-decoration:none;
+        }
+      }
+    }
+  }
+  .single_footer_logo {
+    img {
+      margin-top: 40px;
+    }
+  }
+  p {
+    margin-top: 8px;
+    small {
+      font-size: 12px;
+    }
+  }
+}
