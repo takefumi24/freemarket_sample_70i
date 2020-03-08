@@ -55,20 +55,17 @@
           .form-group
             = f.label :生年月日
             %span.form-require 必須
-            .birth-select-wrap
+            %br/
+            .horizonal-wrap
               .select-wrap
                 = f.collection_select :birth_year, BirthYearSelect.all,:value,:name, {include_blank: "--"}, {required: "required", class: "select-default"}
-                -# font-awesomeを入れ子にするとエラーが出るので、一旦コメントアウトしてます
-                -# %i.fa.fa-angle-down.select-default__icon
-              %span.birth-info 年
+              %span.horizonal-info 年
               .select-wrap
                 = f.select :birth_month, [1,2,3,4,5,6,7,8,9,10,11,12], {include_blank: "--"}, {required: "required", class: "select-default"}
-                -# %i.fa.fa-angle-down.select-default__icon
-              %span.birth-info 月
+              %span.horizonal-info 月
               .select-wrap
                 = f.select :birth_day, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31], {include_blank: "--"}, {required: "required", class: "select-default"}
-                -# %i.fa.fa-angle-down.select-default__icon
-              %span.birth-info 日
+              %span.horizonal-info 日
           .form-group
             = f.label :郵便番号
             %span.form-require 必須
@@ -120,16 +117,13 @@
             = f.label :有効期限, class: "card-form__title"
             %span.form-require.card-form__label 必須
             %br
-            .select-wrap
-              = f.collection_select :exp_month, CardMonth.all,:id,:name,{} ,{class: "select-wrap__default exp_month",id: "exp_month"}
-              %i.fa.fa-angle-down.select-wrap__icon
-            %span 月
-            %ul#expire-mm-error-wrapper.has-error-text
-            .select-wrap
-              = f.collection_select :exp_year, CardYear.all,:value,:name, {} ,{ class: "select-wrap__default exp_year",id: "exp_year"}
-              %i.fa.fa-angle-down.select-wrap__icon
-            %span 年
-            %ul#expire-yy-error-wrapper.has-error-text
+            .horizonal-wrap
+              .select-wrap
+                = f.collection_select :exp_month, CardMonth.all,:id,:name,{} ,{class: "select-wrap__default exp_month",id: "exp_month"}
+              %span.horizonal-info 月
+              .select-wrap
+                = f.collection_select :exp_year, CardYear.all,:value,:name, {} ,{ class: "select-wrap__default",id: "exp_year"}
+              %span.horizonal-info 年
 
           .card-form
             = f.label :セキュリティコード, class: "card-form__title"
@@ -138,13 +132,11 @@
 
             %ul#security-code-error-wrapper.has-error-text
             .card-seqcode
-              .card-seqcode__text{"data-js" => "show-tips-toggle"}
+              .card-seqcode__text
                 %span.form-question> ?
                 カード裏面の番号とは？
-              .card-seqcode__info{"data-js" => "show-tips-content"}
+              .card-seqcode__info
                 カードの裏面をご参照ください。
-                %br
-                = image_tag("//www-mercari-jp.akamaized.net/assets/img/signup/seq-card.png?2845599746",class: "card-seqcode__info--image")
 
         .l-single-content
           .form-group

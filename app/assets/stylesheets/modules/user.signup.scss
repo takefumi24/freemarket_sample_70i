@@ -151,12 +151,12 @@
               }
             }
           }
-          .birth-select-wrap {
+          .horizonal-wrap {
             display: flex;
             line-height: 40px;
             margin-top: 8px;
+            position: relative;
             .select-default {
-              position: relative;
               height: 40px;
               width: 80px;
               padding: 0 10px;
@@ -166,24 +166,11 @@
               font-size: 16px;
               line-height: 1.5;
               cursor: pointer;
-              // -webkit-appearance: none;
-              // -moz-appearance: none;
-              // appearance: none;
-              // &__icon {
-              //   position: absolute;
-              //   right: 16px;
-              //   top: 50%;
-              //   z-index: 2;
-              //   color: #888;
-              //   font-size: 24px;
-              //   font-weight: bold;
-              //   transform: translate(0, -50%);
-              // }
-            .birth-info {
+            }
+            .horizonal-info {
               font-size: 14px;
               margin: 0 5px;
-              }
-            }
+          }
         }
       }
     }
@@ -320,7 +307,7 @@
           width: 100%;
           position: relative;
           z-index: 2;
-          height: 48px;
+          height: 40px;
           padding: 0 16px;
           border-radius: 4px;
           border: 1px solid #ccc;
@@ -328,19 +315,6 @@
           font-size: 16px;
           line-height: 1.5;
           cursor: pointer;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-        }
-        &__icon {
-          position: absolute;
-          right: 16px;
-          top: 50%;
-          z-index: 2;
-          color: #888;
-          font-size: 24px;
-          font-weight: bold;
-          transform: translate(0, -50%);
         }
       }
       .card-seqcode {
