@@ -1,4 +1,5 @@
 .single-container{
+  min-height: 100vh;
   // ログイン画面
   .login-main{
     display:block;
@@ -11,14 +12,14 @@
 
 // 新規会員登録画面へ
       .login-panel__no-account{
-        padding: 40px 64px;
+        padding: 30px 64px;
         text-align: center;
         p{
           font-size: 14px;
         }
         a{
           display: block;
-          margin: 8px 0 0;
+          margin: 20px 0 0;
           border: 1px solid #0099e8;
           background: #0099e8;
           border-radius: 4px;
@@ -28,7 +29,7 @@
           cursor:pointer;
         }
       }
-// メールアドレスでログイン
+  // メールアドレスでログイン
       form{
         .mail-account__field{
           padding: 24px 64px 32px;
@@ -73,7 +74,8 @@
             margin: 40px 0 0;
             color: #0099e8;
             text-decoration: none;
-            font-size:13px;
+            font-size: 13px;
+            text-align: center;
           }
         }
       }
