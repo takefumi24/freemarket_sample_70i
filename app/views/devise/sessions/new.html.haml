@@ -1,5 +1,5 @@
 .single-container
-  = render "users/user_header"
+  = render "layouts/user_header"
   .login-main
     .login-panel
       // 新規会員登録画面へ
@@ -21,4 +21,4 @@
           = f.submit "ログイン", class: "mail-account__field--login-btn"
           = link_to "パスワードをお忘れの方"
 
-  = render "users/user_footer"
+  = render "layouts/user_footer"
