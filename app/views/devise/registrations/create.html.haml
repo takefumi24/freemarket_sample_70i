@@ -1,0 +1,36 @@
+.single-container
+  %header.single-header
+    %h1
+      %figure.single-container__header-icon
+        = link_to root_path do
+          %figure.single-container__header-icon-image
+            = image_tag "logo.png", size: '185x49'
+    .progress-bar.signup-bar
+      %ol.clearfix
+        %li.member-page
+          会員情報入力
+          .progress-status
+        %li.comp-page.active
+          会員登録完了
+          .progress-status
+  // 登録完了画面
+  %main.single-main
+    %section.l-single-container
+      %h2.l-single-head 会員登録完了
+      .l-single-inner
+        .l-single-content
+          .form-group
+            %p.form-info-text
+              ありがとうございます。
+              %br
+              会員登録が完了しました。
+
+          .btn-default.btn-next
+            = link_to 'フリマを始める', root_path
+          .form-group.text-right
+            %p
+              %a{href: "", target: "_blank"}
+                フリマについて
+                %i.fa.fa-angle-right
+
+  = render "layouts/user_footer"
