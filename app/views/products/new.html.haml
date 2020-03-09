@@ -1,0 +1,177 @@
+.container
+  %form.sell
+    .sell__title
+      = image_tag "logo.png" , size:"185x49" , class:"sell__title__logo"
+    .sell__image
+      %h3
+        出品画像
+        %span.required
+      %p.max 最大10枚までアップロードできます
+      .sell__image-select
+        %pre.text
+          ドラッグアンドドロップ
+          またはクリックしてファイルをアップロード
+    .sell__about
+      .sell__about__name
+        %h3
+          商品名
+          %span.required
+        %input{placeholder: "商品名（必須40文字まで）", class: "form"}
+      .sell__about__description
+        %h3
+          商品の説明
+          %span.required
+        %textarea{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "sell__about-description__form"}
+    .sell__about.clearfix
+      .sell__about__left 商品の詳細
+      .sell__about__right
+        .sell__about__right__wrap
+          %h3
+            カテゴリー
+            %span.required
+          .sell__about__right__wrap-box
+            %select{name: "parent", class: "select"}
+              %option ---
+              %option レディース
+              %option メンズ
+              %option ベビー
+            %i.fas.fa-chevron-down
+          .sell__about__right__wrap-box
+            %select{name: "child", class: "select"}
+              %option ---
+              %option トップス
+              %option アウター
+              %option パンツ
+            %i.fas.fa-chevron-down
+          .sell__about__right__wrap-box
+            %select{name: "grand-child", class: "select"}
+              %option ---
+              %option Tシャツ
+              %option シャツ
+              %option ポロシャツ
+            %i.fas.fa-chevron-down
+        .sell__about__right__wrap
+          %h3
+            サイズ
+            %span.required
+          .sell__about__right__wrap-box
+            %select{name: "parent", class: "select"}
+              %option ---
+              %option レディース
+              %option メンズ
+              %option ベビー
+            %i.fas.fa-chevron-down
+        .sell__about__right__wrap
+          %h3
+            ブランド
+            %span.required-gray
+          .sell__about__right__wrap-box
+            %input{placeholder: "例）シャネル", class: "form"}
+        .sell__about__right__wrap
+          %h3
+            商品の状態
+            %span.required
+          .sell__about__right__wrap-box
+            %select{name: "parent", class: "select"}
+              %option ---
+              %option レディース
+              %option メンズ
+              %option ベビー
+            %i.fas.fa-chevron-down
+    .sell__about.clearfix
+      .sell__about__left 配送について
+      .sell__about__right
+        .sell__about__right__wrap
+          %h3
+            配送料の負担
+            %span.required
+          .sell__about__right__wrap-box
+            %select{name: "parent", class: "select"}
+              %option ---
+              %option レディース
+              %option メンズ
+              %option ベビー
+            %i.fas.fa-chevron-down
+        .sell__about__right__wrap
+          %h3
+            発送元の地域
+            %span.required
+          .sell__about__right__wrap-box
+            %select{name: "parent", class: "select"}
+              %option ---
+              %option レディース
+              %option メンズ
+              %option ベビー
+            %i.fas.fa-chevron-down
+        .sell__about__right__wrap
+          %h3
+            発送までの日数
+            %span.required
+          .sell__about__right__wrap-box
+            %select{name: "parent", class: "select"}
+              %option ---
+              %option レディース
+              %option メンズ
+              %option ベビー
+            %i.fas.fa-chevron-down
+    .sell__about.clearfix
+      .sell__about__left 販売価格(300〜9,999,999)
+      .sell__about__right
+        .sell__about__right__wrap
+          .sell__about__right__wrap__price
+            %h3.sell__about__right__wrap__price-label
+              価格
+              %span.required
+            .sell__about__right__wrap__price-input
+              ¥
+              .sell__about__right__wrap__price-input-form
+                %input{placeholder: "例）300", class: "form"}
+        .sell__about__right__wrap__fee.clearfix
+          .sell__about__right__wrap__fee-left
+            販売手数料 (10%)
+          .sell__about__right__wrap__fee-right
+            ¥30
+        .sell__about__right__wrap__profit
+          .sell__about__right__wrap__profit-left
+            販売利益
+          .sell__about__right__wrap__profit-right
+            ¥270
+    .sell__about.clearfix
+      .sell__about__bottom
+        .sell__about__bottom-btn
+          = link_to "出品する", '#', class: 'sell__about__bottom-btn submit'
+          = link_to "もどる", '#', class: 'sell__about__bottom-btn back'
+        .sell__about__bottom-text
+          %p
+            禁止されている
+            = link_to '#' do
+              行為
+            および
+            = link_to '#' do
+              出品物
+            を必ずご確認ください。
+          %p
+            = link_to '#' do
+              偽ブランド品
+            や
+            = link_to '#' do
+              盗品物
+            などの販売は犯罪であり、法律により処罰される可能性があります。
+            また、出品をもちまして
+            = link_to '#' do
+              加盟店規約
+            に同意したことになります。
+
+  %footer.single-footer
+    %nav
+      %ul.clearfix
+        %li
+          = link_to "プライバシーポリシー"
+        %li
+          = link_to "フリマ利用規約"
+        %li
+          = link_to "特定商取引に関する表記"
+    = link_to root_path, class: "single_footer_logo" do
+      =image_tag "logo.png", :size =>'185x49'
+    %p
+      %small © 2020 Frima
