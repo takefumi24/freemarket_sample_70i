@@ -1,0 +1,15 @@
+-# 子要素
+- if @parent % 2 == 0
+  - childCategories = ["トップス","ジャケット/アウター","パンツ","スカート","ワンピース"]
+- else
+  - childCategories = ["キッチン/食器","ベッド/マットレス","ソファ/ソファベッド","椅子/チェア","机/テーブル"]
+
+- @child = 0
+
+%ul
+  - childCategories.each do |a|
+    %li
+      = link_to "#" do 
+        = a
+      = render "top/grandChildLink"
+      - @child += 1
