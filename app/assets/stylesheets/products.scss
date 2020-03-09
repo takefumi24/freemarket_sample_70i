@@ -1,3 +1,324 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import"common";
+@import"variable";
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  padding: 0;
+}
+
+.sell {
+  width: 700px;
+  margin: 0 auto;
+  background-color: $white;
+  .clearfix::after {
+    @include clearfix;
+  }
+  input:focus, textarea:focus, select:focus {
+    @include input-focus;
+  }
+
+  & a {
+    color: $liteblue;
+    text-decoration: none;
+    &:hover {
+      @include link_hover;
+    }
+  }
+  .required::after {
+    content: '必須';
+    @include require;
+    background-color: $red;
+  }
+  .required-gray::after {
+    content: '任意';
+    @include require;
+    background-color: $gray;
+  }
+  .form {
+    width: 100%;
+    height: 48px;
+    margin-top: 8px;
+    padding: 10px 16px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  &__title {
+    height: 97px;
+    padding: 32px 16px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    border-top: solid 1px $main-background;
+    &__logo {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  &__image {
+    padding: 40px;
+    border-top: solid 1px $main-background;
+    & label {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    & .max {
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+    & input {
+      display: none;
+    }
+    &-select {
+      position: relative;
+      width: 622px;
+      min-height: 162px;
+      padding: 60px 40px;
+      background-color: #f5f5f5;
+      border: 1px dashed #ccc;
+      margin-top: 16px;
+      text-align: center;
+      line-height: 1.5;
+      font-size: 14px!important;
+      font-weight: 600;
+      letter-spacing: -2.3px;
+      vertical-align: middle;
+      cursor: pointer;
+      &__ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        &-text {
+          display: inline-block;
+          float: left;
+          height: 162px;
+          width: 20%;
+          right: 0px;
+          cursor: pointer;
+          opacity: 0;
+          background-color: #f5f5f5;
+          border-left: 1px dashed #ccc;
+          border-right: 1px dashed #ccc;
+          & li {
+            width: 114px;
+            height: 116px;
+            margin: 0 auto;
+            & img {
+              object-fit: contain;
+            }
+          }
+          & .btn-box {
+            display: none;
+            & a {
+              display: inline-block;
+              float: left;
+              width: calc(50% - 1px);
+              height: 44px;
+              line-height: 44px;
+              border: 1px solid #f0f0f0;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__about {
+    height: 100%;
+    margin-top: 1px;
+    border-top: solid 1px $main-background;
+    padding: 40px;
+    & label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+    &__description {
+      font-size: 16px;
+      margin-top: 40px;
+      & textarea {
+        width: 100%;
+        min-height: 142px;
+        padding: 10px;
+        margin-top: 8px;
+        border: 1px solid #ccc;
+        line-height: 1.5;
+      }
+    }
+    &__left {
+      float: left;
+      color: #888;
+      font-weight: bold;
+    }
+    &__right {
+      float: right;
+      width: 400px;
+      &__wrap{
+        margin-top: 40px;
+        &:first-child {
+          margin: 0;
+        }
+        &-box {
+          position: relative;
+          width: 400px;
+          margin-top: 8px;
+          & select {
+            padding: 0 16px;
+            width: 100%;
+            height: 48px;
+            background-color: $white;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            cursor: pointer;
+            -webkit-appearance: none;
+          }
+          & .fa-chevron-down {
+            position: absolute;
+            right: 16px;
+            top: 31%;
+            color: #888;
+            font-size: 20px;
+            z-index: 2;
+            font-family: "Font Awesome 5 Free";
+          }
+        }
+        & .child, .grand_child{
+          display: none;
+        }
+        &__price {
+          width: 400px;
+          height: 72px;
+          padding-bottom: 24px;
+          &-label {
+            float: left;
+            line-height: 48px;
+          }
+          &-input {
+            text-align: right;
+            float: right;
+            width: 50%;
+            height: 100%;
+            &-form {
+              display: inline-block;
+              width: 80%;
+              margin-left: 5%;
+            }
+            & input {
+              text-align: right;
+              &::placeholder {
+                text-align: right;
+              }
+              &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+              }
+            }
+            & .form {
+              margin-top: 0;
+            }
+          }
+        }
+        &__fee {
+          height: 63px;
+          padding: 24px 0;
+          border-top: 1px solid $border-color;
+          &-left {
+            float: left;
+          }
+          &-right {
+            float: right;
+          }
+        }
+        &__profit {
+          height: 83px;
+          padding: 24px 0;
+          border-top: 1px solid $border-color;
+          font-weight: 600;
+          &-left {
+            float: left;
+            font-size: 16px;
+          }
+          &-right {
+            float: right;
+            font-size: 34px;
+          }
+        }
+      }
+    }
+    &__bottom {
+      & .submit {
+
+        width: 350px;
+        margin-left: 135px;
+        background-color: $cyan;
+        cursor: pointer;
+      }
+      & .back {
+        width: 350px;
+        margin: 24px auto 0;
+        background-color: $gray;
+        &:active {
+          @include input-focus;
+        }
+      }
+      &-text {
+        line-height: 1.5;
+        margin-top: 100px;
+      }
+      &-btn {
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        color: $white!important;
+        text-align: center;
+        font-size: 20px;
+        &:hover {
+          @include a-no-change-hover;
+        }
+      }
+    }
+  }
+}
+
+.single-footer{
+  width: 456px;
+  height: 150px;
+  margin: 0 auto;
+  padding: 40px 0;
+  text-align: center;
+  z-index: 1;
+  nav {
+    ul {
+      list-style:none;
+      padding: 0;
+      li {
+        color: black;
+        display: inline-block;
+        font-size: 12px;
+        margin: 0 7px;
+        a {
+         display: block;
+         color: #333333;
+         text-decoration:none;
+        }
+      }
+    }
+  }
+  .single_footer_logo {
+    img {
+      margin-top: 40px;
+    }
+  }
+  p {
+    margin-top: 8px;
+    small {
+      font-size: 12px;
+    }
+  }
+}
