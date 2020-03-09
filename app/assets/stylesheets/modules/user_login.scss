@@ -1,5 +1,4 @@
 .single-container{
-  // padding: 0 0 220px;
   // ログイン画面
   .login-main{
     display:block;
@@ -22,58 +21,11 @@
           margin: 8px 0 0;
           border: 1px solid #0099e8;
           background: #0099e8;
+          border-radius: 4px;
           color: #fff;
           line-height: 40px;
           text-decoration: none;
           cursor:pointer;
-        }
-      }
-
-// SNSでログイン
-      .login-panel__sns-account{
-        border-top: 1px solid #eee;
-        padding: 32px 64px;
-        text-align: center;
-        .btn-sns{
-          text-decoration:none;
-          position: relative;
-          display: block;
-          width: 100%;
-          line-height: 48px;
-          font-size: 14px;
-          border: 1px solid transparent;
-          cursor: pointer;
-          text-align: center;
-          .icon-facebook{
-            position:absolute;
-            top:20px;
-            left:20px;
-            color:white;
-          }
-          .icon-google{
-            position:absolute;
-            top: 16px;
-            left: 22px;
-            height: 22px;
-            text-align: middle;
-            color: white;
-          }
-        }
-        .btn-facebook{
-          position: relative;
-          background: #385185;
-          span{
-            color:white;
-          }
-        }
-        .btn-google{
-          position: relative;
-          border: #979797 solid 1px;
-          margin: 16px 0 0;
-          background-color:#FA6228;
-          span{
-            color:white;
-          }
         }
       }
 // メールアドレスでログイン
@@ -82,7 +34,7 @@
           padding: 24px 64px 32px;
           .mail-account__field--address{
             .address__input{
-              width:90%;
+              width:100%;
               padding: 10px 16px 8px;
               border-radius: 4px;
               border: 1px solid #cccccc;
@@ -94,7 +46,7 @@
           .mail-account__field--password{
             margin-top:24px;
             .password__input{
-              width:90%;
+              width:100%;
               padding: 10px 16px 8px;
               border-radius: 4px;
               border: 1px solid #cccccc;
@@ -112,6 +64,7 @@
             line-height: 48px;
             font-size: 14px;
             border: 1px solid transparent;
+            border-radius: 4px;
             cursor: pointer;
             text-align: center;
           }

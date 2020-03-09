@@ -118,11 +118,9 @@
             %span.form-require.card-form__label 必須
             %br
             .horizonal-wrap
-              .select-wrap
-                = f.collection_select :exp_month, CardMonth.all,:id,:name,{} ,{class: "select-wrap__default exp_month",id: "exp_month"}
+              = f.collection_select :exp_month, CardMonth.all,:id,:name,{} ,{class: "select-default exp_month",id: "exp_month"}
               %span.horizonal-info 月
-              .select-wrap
-                = f.collection_select :exp_year, CardYear.all,:value,:name, {} ,{ class: "select-wrap__default",id: "exp_year"}
+              = f.collection_select :exp_year, CardYear.all,:value,:name, {} ,{ class: "select-default",id: "exp_year"}
               %span.horizonal-info 年
 
           .card-form
