@@ -186,6 +186,7 @@
             color: #888;
             font-size: 20px;
             z-index: 2;
+            font-family: "Font Awesome 5 Free";
           }
         }
         & .child, .grand_child{
@@ -285,49 +286,39 @@
   }
 }
 
-.sell__footer {
-  background-color: $main-background;
-  text-align: center;
+.single-footer{
   width: 456px;
-  height: 220px;
+  height: 150px;
   margin: 0 auto;
   padding: 40px 0;
-
-  ul {
-    list-style: none;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 0 0 16px;
-    font-size: 12px;
-    // text-decoration: none;
-    a {
-      text-decoration: none;
-      color: $black;
+  text-align: center;
+  z-index: 1;
+  nav {
+    ul {
+      list-style:none;
+      padding: 0;
+      li {
+        color: black;
+        display: inline-block;
+        font-size: 12px;
+        margin: 0 7px;
+        a {
+         display: block;
+         color: #333333;
+         text-decoration:none;
+        }
+      }
     }
   }
-
-  li:hover {
-    @include hover-text;
-  }
-
-  & li:first-child {
-    display: inline-block;
-    margin: 0;
-  }
-  a {
+  .single_footer_logo {
     img {
-      width: 80px;
-      height: 65px;
-      margin: 40px auto 0;
+      margin-top: 40px;
     }
   }
   p {
-    margin: 8px 0 0;
-
+    margin-top: 8px;
     small {
-      font-size: 13px;
+      font-size: 12px;
     }
   }
 }
