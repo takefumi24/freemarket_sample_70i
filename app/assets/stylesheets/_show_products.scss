@@ -1,0 +1,133 @@
+.show-container {
+  width: 100%;
+  padding: 40px;
+  background: #F8F8F8;
+  .show-content {
+    width: 700px;
+    margin: 0 auto;
+    .show-content-wrapper {
+      padding: 24px 40px;
+      background: #fff;
+      margin-bottom: 10px;
+      .content-heading {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 16px;
+      }
+      .main-image {
+        width: 560px;
+        height: 346px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+      }
+      .content-images {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        &__list {
+          margin-right: 8px;
+          object-fit: cover;
+          height: 87px;
+          width: 140px;
+        }
+      }
+      .price-content {
+        text-align: center;
+        margin: 24px 0 24px;
+        &__price {
+          font-size: 46px;
+          font-weight: bold;
+        }
+      }
+      .buy-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        background: #3CCACE;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 16px;
+        margin-bottom: 32px;
+        line-height: 56px;
+      }
+      .content-text {
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 30px;
+      }
+      .content-info {
+        margin-bottom: 20px;
+        border: 1px solid #dedede;
+        width: 100%;
+        font-size: 14px;
+        &__name {
+          vertical-align: middle;
+          text-align: center;
+          width: 20%;
+          background: #eee;
+          padding: 10px;
+          border: 1px solid #dedede;
+        }
+        &__text {
+          padding: 18px;
+          width: 61%;
+          border: 1px solid #dedede;
+          a {
+            color: #3CCACE;
+            text-decoration: none;
+          }
+        }
+      }
+      .option-items {
+        display: flex;
+        justify-content: space-between;
+        &__btn {
+          color: #3CCACE;
+          border: 1px solid #ffb340;
+          padding: 10px 16px;
+          border-radius: 40px;
+        }
+        &__btn:hover {
+          opacity: .7;
+        }
+        &__report-btn {
+          font-size: 14px;
+          border: 1px solid #333;
+          border-radius: 4px;
+          a {
+            padding: 10px 16px;
+            display: inline-block;
+            color: #333;
+            text-decoration: none;
+          }
+        }
+        &__report-btn:hover {
+          opacity: .7;
+        }
+      }
+    }
+    .links {
+      display: flex;
+      justify-content: space-between;
+      a {
+        color: #3CCACE;
+        text-decoration: none;
+      }
+    }
+    .more-link {
+      margin-top: 24px;
+      margin-bottom: 8px;
+      a {
+        text-decoration: none;
+        color: #3CCACE;
+        font-size: 22px;
+        font-weight: bold;
+      }
+    }
+  }
+}
