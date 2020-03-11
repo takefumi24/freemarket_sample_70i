@@ -83,3 +83,5 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'font-awesome-sass'
 gem 'active_hash'
+# カテゴリテーブルの階層を実現するgem
+gem 'ancestry'

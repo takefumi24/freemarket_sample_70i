@@ -1,0 +1,6 @@
+.categories-index
+  .container
+    %h2 カテゴリー一覧
+    .category-links
+      - @main_categories.each do |category|
+        = link_to category.name, category_path(category.id), class: 'category-link'
