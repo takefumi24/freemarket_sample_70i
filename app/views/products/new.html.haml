@@ -3,6 +3,7 @@
     .sell__title
       = image_tag "logo.png" , size:"185x49" , class:"sell__title__logo"
     .sell__image
+    = form_for(@product) do |f|
       %h3
         出品画像
         %span.required
