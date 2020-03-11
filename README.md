@@ -29,9 +29,23 @@ Things you may want to cover:
 |nickname|string|null: false|
 |email|string|null: false, default: ""|
 |encrypted_password|string|null: false, default: ""|
+|family_name|string|null: false|
+|name|string|null: false|
+|family_name_kana|string|null: false|
+|name_kana|string|null: false|
+|city|string|null: false|
+|street|string|null: false|
+|building|string|null: false|
+|image|text|-------|
+|introduction|text|-------|
+|postal_code|integer|null: false|
+|phone|integer|-------|
+|birth_year|date|null: false|
+|birth_month|date|null: false|
+|birth_day|date|null: false|
+|prefecture|integer|null: false|
 
 ### Association
-- has_one :profile
 - has_one :credit_card
 - has_many :comments
 - accepts_nested_attributes_for :profile
@@ -66,34 +80,7 @@ Things you may want to cover:
 - belongs_to :sending_method
 
 
-
-# profilesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|family_name|string|null: false|
-|name|string|null: false|
-|family_name_kana|string|null: false|
-|name_kana|string|null: false|
-|city|string|null: false|
-|street|string|null: false|
-|building|string|null: false|
-|image|text|-------|
-|introduction|text|-------|
-|postal_code|integer|null: false|
-|phone|integer|-------|
-|birth_year|date|null: false|
-|birth_month|date|null: false|
-|birth_day|date|null: false|
-|prefecture|integer|null: false|
-|user_id|references|foreign_key: true|
-
-### Association
-- belongs_to :user
-
-
 # credit_cardsテーブル
-
 |Column|Type|Options|
 |------|----|-------|
 |number|integer|null: false|
@@ -106,10 +93,6 @@ Things you may want to cover:
 - belongs_to :user
 
 
-
-
-
-
 # brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -119,7 +102,6 @@ Things you may want to cover:
 - has_many :products
 - has_many :categories, through: :category_brands
 - has_many :category_brands
-
 
 
 # categoriesテーブル
@@ -134,7 +116,6 @@ Things you may want to cover:
 - has_many :category_brands
 
 
-
 # category_brandテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -144,7 +125,6 @@ Things you may want to cover:
 ### Association
 - belongs_to :category
 - belongs_to :brand
-
 
 
 # sizesテーブル
@@ -182,6 +162,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :products
+
 
 # commentsテーブル
 |Column|Type|Options|
