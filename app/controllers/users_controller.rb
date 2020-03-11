@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   
-  def new
+  def index
+  end
+  
+  def show
+    @user = User.find(params[:id])
   end
 
-  def create
-    redirect_to user_registration_path
-  end
 end
