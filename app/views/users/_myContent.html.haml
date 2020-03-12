@@ -1,0 +1,57 @@
+.my-content__info
+  = link_to "#" do
+    =image_tag "member_photo_noimage_thumb.png", width: "60", hegiht: "60"
+    .my-content__info--name
+      %p たかはし
+    .my-content__info--rating
+      %p 評価 0
+      %p 出品数 0
+
+.my-content__tabpage.clearfix
+  %ul.tabs
+    -# リンク先としてページ内の特定要素を指定
+    %li#tab1.tab.active
+      = link_to "#cont1" do
+        お知らせ
+    %li#tab2.tab
+      = link_to "#cont2" do
+        やることリスト
+        
+  %ul.panels
+    %li#cont1.panel.active
+      = render "testLink"
+      = render "testLink"
+        
+    %li#cont2.panel 
+      = render "testLink"
+      
+
+  .my-content__tabpage--listLink
+    = link_to "#" do
+      一覧を見る
+
+.my-content__tabpage.purchase
+  %p 購入した商品
+  %ul.tabs
+    -# リンク先としてページ内の特定要素を指定
+    %li#tab1.tab.active
+      = link_to "#cont2_01" do
+        取引中
+    %li#tab2.tab
+      = link_to "#cont2_02" do
+        過去の取引
+
+  %ul.panels
+    %li#cont2_01.panel.active 
+      = link_to "#" do
+        = image_tag "furima-icon.png"
+        .body
+          商品はありません。
+    %li#cont2_02.panel
+      = link_to "#" do
+        = image_tag "furima-icon.png"
+        .body
+          商品はありません。
+  .my-content__tabpage--listLink
+    = link_to "#" do
+      一覧を見る
