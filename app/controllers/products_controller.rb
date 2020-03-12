@@ -17,6 +17,11 @@ class ProductsController < ApplicationController
     @product = Product.create(product_params)
   end
 
+  def show
+    @product = Product.find(params[:id])
+    @prefecture = Prefecture.find(@product.prefecture)
+  end
+
   private
 
     def brand_check(brand_name)

@@ -16,12 +16,18 @@
         margin-top: 0;
         margin-bottom: 16px;
       }
-      .main-image {
-        width: 560px;
-        height: 346px;
-        object-fit: cover;
+      .slide {
+        display: none;
+        .main-image {
+          width: 560px;
+          height: 346px;
+          object-fit: cover;
+          display: block;
+          margin: 0 auto;
+        }
+      }
+      .active {
         display: block;
-        margin: 0 auto;
       }
       .content-images {
         display: flex;
@@ -32,6 +38,9 @@
           object-fit: cover;
           height: 87px;
           width: 140px;
+        }
+        .active-img {
+          opacity: .4;
         }
       }
       .price-content {
@@ -54,6 +63,20 @@
         margin-top: 16px;
         margin-bottom: 32px;
         line-height: 56px;
+      }
+      .sold-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        background: #888888;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 16px;
+        margin-bottom: 32px;
+        line-height: 56px;
+        pointer-events: none;
       }
       .content-text {
         font-size: 18px;
@@ -112,11 +135,17 @@
       }
     }
     .links {
-      display: flex;
-      justify-content: space-between;
+      list-style: none;
+      height: 24px;
       a {
         color: #3CCACE;
         text-decoration: none;
+      }
+      .prev-product {
+        float: left;
+      }
+      .next-product {
+        float: right;
       }
     }
     .more-link {
