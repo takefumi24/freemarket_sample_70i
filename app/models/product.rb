@@ -8,4 +8,12 @@ class Product < ApplicationRecord
   belongs_to :sending_method
   belongs_to :user
   belongs_to :category
+
+  def previous
+    Product.order("id DESC").where("id < ?", id).first
+  end
+
+  def next
+    Product.order("id ASC").where("id > ?", id).first
+  end
 end
