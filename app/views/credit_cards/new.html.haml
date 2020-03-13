@@ -1,0 +1,30 @@
+.creditCard
+  = image_tag "logo.png" 
+
+  .creditCard__main
+    %h1 クレジットカード情報入力
+    = form_with url: user_credit_cards_path, method: :post, class: "creditCard__form", html: { name: "inputForm" } do |f| 
+      
+      = f.label :カード番号, class: 'label'
+      %span.required 必須
+      = f.text_field :number, type: 'text', class: 'input-number', placeholder: '半角数字のみ', maxlength: "16"
+
+      .cards-expire
+        = f.label :有効期限, class: 'label'
+        %span.required 必須
+        .cards-expire--wraps
+          .wrap
+            = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'input-expire'
+            %span.expire-text 月
+          .wrap
+            = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030]],{} , class: 'input-expire'
+            %span.expire-text 年
+
+      .cards-expire
+        = f.label :セキュリティコード, class: 'label'
+        %span.required 必須
+        = f.text_field :security_code, type: 'text', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
+
+      .content-bottom#card_token
+        = f.submit '登録する', class: 'card-btn', id: 'token_submit'
+        = link_to "戻る", user_path(1), class: "card-btn"
