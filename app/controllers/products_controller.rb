@@ -17,6 +17,30 @@ class ProductsController < ApplicationController
     @product = Product.create(product_params)
   end
 
+  def show
+    @product = Product.find(params[:id])
+    @prefecture = Prefecture.find(@product.prefecture)
+  end
+
+  def edit
+    # 編集機能実装用
+    # @product = Product.find(params[:id])
+  end
+
+  def update
+    # 編集機能実装用
+    # product = Product.find(params[:id])
+    # product.update(product_params)
+    # redirect_to action: :show
+  end
+
+  def destroy
+    # 削除機能実装用
+    # product = Product.find(params[:id])
+    # product.destroy
+    # redirect_to root_path
+  end
+
   private
 
     def brand_check(brand_name)
