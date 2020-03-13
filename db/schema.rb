@@ -95,11 +95,11 @@ ActiveRecord::Schema.define(version: 2020_03_10_105152) do
     t.integer "prefecture", null: false
     t.string "city", null: false
     t.string "street", null: false
-    t.string "building", null: false
+    t.string "building"
     t.text "image"
     t.text "introduction"
     t.integer "postal_code", null: false
-    t.integer "phone"
+    t.string "phone"
     t.integer "birth_year", null: false
     t.integer "birth_month", null: false
     t.integer "birth_day", null: false

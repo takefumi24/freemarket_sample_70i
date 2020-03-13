@@ -5,6 +5,9 @@
         = link_to root_path do
           %figure.single-container__header-icon-image
             = image_tag "logo.png", size: '185x49'
+            - if alert
+              %p.alert.alert-error= alert
+
     .progress-bar.signup-bar
       %ol.clearfix
         %li.member-page
