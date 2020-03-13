@@ -41,6 +41,9 @@ class ProductsController < ApplicationController
     # redirect_to root_path
   end
 
+  def buy
+  end
+
   private
 
     def brand_check(brand_name)

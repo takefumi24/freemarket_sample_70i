@@ -8,7 +8,7 @@
         = @product.name
       %ul
         -@product.images.each do |image|
-          %li.slide
+          %li.show-slide
             =image_tag image.image_url, class: "main-image"
       .content-images
         -@product.images.each do |image|
@@ -26,7 +26,7 @@
       -if @product.buyer_id == 1
         =link_to "売り切れました", "#", class: "disable-btn"
       -elsif user_signed_in? && @product.buyer_id != 1 && current_user.id != @product.user_id
-        =link_to "購入画面に進む", "#", class: "able-btn"
+        =link_to "購入画面に進む", buy_products_path, class: "able-btn"
       -elsif user_signed_in? && @product.buyer_id != 1 && current_user.id == @product.user_id
         =link_to "出品を編集する", edit_product_path(@product.id), class: "able-btn"
         =link_to "出品を削除する", product_path(@product.id), method: :delete, class: "able-btn"

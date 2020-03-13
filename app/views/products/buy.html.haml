@@ -1,0 +1,40 @@
+.show-container
+  .show-content
+    .content-head-img
+      =link_to root_path do
+        = image_tag "logo.png"
+    
+    .buy-confirmation
+      %h2.buy-head 購入内容の確認
+      .buy-product
+        .buy-item
+          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class: "buy-item__img"
+          .buy-item__info
+            %p.buy-item__info__name product3
+            %span.buy-item__info__price ¥30000
+            %span.buy-item__info__fee （税込） 送料込み
+      .buy-content
+        %form.buy-form
+          .buy-price
+            .buy-price__head 支払い金額
+            .buy-price__int ¥30000
+          .payment-method
+            .payment-method__head 支払い方法
+            =link_to "#", class: "payment-method__text" do
+              %span.payment-method__text--plus ＋
+              %span.payment-method__text--char 登録してください
+          .shipping-address
+            .shipping-address__head
+              %span 配送先
+              %div
+                =link_to "変更する"
+            %p.shipping-address__text
+              〒150-0043
+              %br
+              東京都渋谷区道玄坂２丁目２３−１２ フォンティスビル ７F
+              %br
+              TECH CAMP
+          .buy-button
+            %button 購入する
+    
+    =render "layouts/user_footer"

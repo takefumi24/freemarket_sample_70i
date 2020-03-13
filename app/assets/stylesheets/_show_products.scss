@@ -16,7 +16,7 @@
         margin-top: 0;
         margin-bottom: 16px;
       }
-      .slide {
+      .show-slide {
         display: none;
         .main-image {
           width: 560px;
@@ -26,7 +26,7 @@
           margin: 0 auto;
         }
       }
-      .active {
+      .show-active {
         display: block;
       }
       .content-images {
