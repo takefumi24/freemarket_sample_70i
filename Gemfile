@@ -89,3 +89,4 @@ gem 'active_hash'
 # カテゴリテーブルの階層を実現するgem
 gem 'ancestry'
 gem 'rails-i18n'
+
