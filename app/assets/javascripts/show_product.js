@@ -1,20 +1,20 @@
 $(document).on('turbolinks:load', function() { 
   let imgList = $('.content-images__list');
-  let active = $('.active');
+  let active = $('.show-active');
   
-  active.removeClass('active');
+  active.removeClass('show-active');
   imgList.removeClass('active-img');
 
-  $('.slide:first').addClass('active');
+  $('.show-slide:first').addClass('show-active');
   $('.content-images__list:first').addClass('active-img')
 
   imgList.hover(function() {
-    $('.active').removeClass('active');
+    $('.show-active').removeClass('show-active');
     imgList.removeClass('active-img');
     $(this).addClass('active-img');
 
     let clickIndex = imgList.index($(this));
 
-    $('.slide').eq(clickIndex).addClass('active');
+    $('.show-slide').eq(clickIndex).addClass('show-active');
   });
 });

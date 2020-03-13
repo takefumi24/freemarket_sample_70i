@@ -8,7 +8,7 @@
         = @product.name
       %ul
         -@product.images.each do |image|
-          %li.slide
+          %li.show-slide
             =image_tag image.image_url, class: "main-image"
       .content-images
         -@product.images.each do |image|
