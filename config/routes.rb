@@ -3,8 +3,11 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
       }
   root "products#index"
-  resources :users, only: [:new, :create, :show, :destroy]
   resources :products, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :users, only: [:show, :new, :create] do
+    resources :credit_cards, only: [:new, :create]
+  end
+  
   resources :categories, only: [:index, :show]
 
 end

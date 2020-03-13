@@ -222,12 +222,12 @@
     cursor: pointer;
     text-align: center;
     margin: 0 auto;
-    background-color: #48d1cc;;
+    background-color: #48d1cc;
     color: white;
   }
 }
 
-
+// いいね！一覧
 .favorite {
   padding: 5px;
   background-color: white;
@@ -244,7 +244,48 @@
     & li {
       text-align: center;
       line-height: 100px;
-      color: gray;
+      color: rgb(161, 149, 149);
     }
   }
 }
+
+// 支払い方法
+.mypage-card {
+  background-color: white;
+  border-top: 2px solid red;
+  & .title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+  }
+  &__pages > li {
+    display: none;
+  }
+  &__pages > .active {
+    display: block;
+  }
+
+  & .create-card {
+    padding: 20px;
+    min-height: 200px;
+    border-top: 1px solid lightgray;
+  }
+  &__btn {
+    line-height: 100px;
+    text-align: center;
+    padding: 30px;
+    & a {
+      display: block;
+      width: 80%;
+      font-size: 14px;
+      line-height: 50px;
+      cursor: pointer;
+      text-align: center;
+      margin: 0 auto;
+      background-color: #48d1cc;;
+      color: white;
+    }
+  }
+} 
