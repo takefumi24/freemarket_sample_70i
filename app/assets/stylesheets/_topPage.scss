@@ -339,6 +339,7 @@ a {
       font-size: 24px;
       text-decoration: none;
       font-weight: bold;
+      margin-top: 10px;
       & a {
         color: #3CCACE;
       }
@@ -355,9 +356,17 @@ a {
         &:hover {
           opacity: 0.5;
         }
+        &--rank {
+          font-size: 20px;
+          text-align: center;
+          margin-bottom: 5px;
+          & i {
+            color: goldenrod;
+          }
+        }
         &__link {
-          background-color: #fff;
           display: inline-block;
+          color: black;
           &--img {
             width: 220px;
             height: 150px;

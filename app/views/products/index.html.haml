@@ -98,57 +98,30 @@
         %p.description 
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
 
-  //すべてのカテゴリ一覧
+  //カテゴリ一覧
   .pickupContainer
     .pickupContainer__title
       カテゴリ一覧
     .pickupContainer__box
       .pickupContainer__box--subtitle
         = link_to "#" do
-          全ての商品
+          新着アイテム
       .pickupContainer__box--categories
-        .category
-          = link_to "#", class: "category__link" do
-            .category__link--img
-              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .category__link--text
-              %p product3
-              %ul
-                %li
-                  30000円
-                %li
-                  %i.fa.fa-star.likeIcon 
-                  0
-              %p.tax 
-                (税込)
-        .category
-          = link_to "#", class: "category__link" do
-            .category__link--img
-              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .category__link--text
-              %p product3
-              %ul
-                %li
-                  30000円
-                %li
-                  %i.fa.fa-star.likeIcon 
-                  0
-              %p.tax 
-                (税込)
-        .category
-          = link_to "#", class: "category__link" do
-            .category__link--img
-              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .category__link--text
-              %p product3
-              %ul
-                %li
-                  30000円
-                %li
-                  %i.fa.fa-star.likeIcon 
-                  0
-              %p.tax 
-                (税込)
+        - @products.each do |product|
+          .category
+            = link_to product_path(product.id), class: "category__link" do
+              .category__link--img
+                = image_tag product.images[0].image_url
+              .category__link--text
+                = product.name
+                %ul
+                  %li
+                    = product.price
+                    円
+                  %li
+                    = icon("fa", "star", 0)
+                %p.tax 
+                  (税込)
                 
   //ピックアップブランド
   .pickupContainer
@@ -157,50 +130,27 @@
     .pickupContainer__box
       .pickupContainer__box--subtitle
         = link_to "#" do
-          アーカイバ
+          新着ブランド一覧
       .pickupContainer__box--categories
-        .category
-          = link_to "#", class: "category__link" do
-            .category__link--img
-              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .category__link--text
-              %p product3
-              %ul
-                %li
-                  30000円
-                %li
-                  %i.fa.fa-star.likeIcon 
-                  0
-              %p.tax 
-                (税込)
-        .category
-          = link_to "#", class: "category__link" do
-            .category__link--img
-              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .category__link--text
-              %p product3
-              %ul
-                %li
-                  30000円
-                %li
-                  %i.fa.fa-star.likeIcon 
-                  0
-              %p.tax 
-                (税込)
-        .category
-          = link_to "#", class: "category__link" do
-            .category__link--img
-              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
-            .category__link--text
-              %p product3
-              %ul
-                %li
-                  30000円
-                %li
-                  %i.fa.fa-star.likeIcon 
-                  0
-              %p.tax 
-                (税込)
+        - @brand_products.each do |product,i|
+          .category
+            = link_to product_path(product.id), class: "category__link" do
+              .category--rank
+                = icon("fas", "crown")
+                = product.brand.name
+              .category__link--img
+                = image_tag product.images[0].image_url
+              .category__link--text
+                = product.name
+                %ul
+                  %li
+                    = product.price
+                    円
+                  %li
+                    = icon("fa", "star", 0)
+                %p.tax 
+                  (税込)
+
 .appBannar
   .appBannar__inner
     .appBannar__inner--title
