@@ -6,5 +6,6 @@ class AddColumnProducts < ActiveRecord::Migration[5.2]
     add_reference :products, :condition, null: false, foreign_key: true
     add_reference :products, :sending_method, null: false, foreign_key: true
     add_reference :products, :buyer, foreign_key: { to_table: :users }
+    add_reference :products, :category, null: false, foreign_key: true
   end
 end

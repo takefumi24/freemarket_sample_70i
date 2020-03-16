@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     get "users/show" => "users#show"
 
   root "products#index"
-
   resources :products, only: [:new, :create, :show, :edit, :update, :destroy] do
     collection do
       get 'buy'

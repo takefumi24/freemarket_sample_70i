@@ -1,178 +1,92 @@
-.container
-  %form.sell
-    .sell__title
-      = image_tag "logo.png" , size:"185x49" , class:"sell__title__logo"
-    .sell__image
-    = form_for(@product) do |f|
-      %h3
-        出品画像
-        %span.required
-      %p.max 最大10枚までアップロードできます
-      .sell__image-select
-        %pre.text
-          ドラッグアンドドロップ
-          またはクリックしてファイルをアップロード
-    .sell__about
-      .sell__about__name
-        %h3
-          商品名
-          %span.required
-        %input{placeholder: "商品名（必須40文字まで）", class: "form"}
-      .sell__about__description
-        %h3
-          商品の説明
-          %span.required
-        %textarea{placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "sell__about-description__form"}
-    .sell__about.clearfix
-      .sell__about__left 商品の詳細
-      .sell__about__right
-        .sell__about__right__wrap
-          %h3
-            カテゴリー
-            %span.required
-          .sell__about__right__wrap-box
-            %select{name: "parent", class: "select"}
-              %option ---
-              %option レディース
-              %option メンズ
-              %option ベビー
-            %i.fas.fa-chevron-down
-          .sell__about__right__wrap-box
-            %select{name: "child", class: "select"}
-              %option ---
-              %option トップス
-              %option アウター
-              %option パンツ
-            %i.fas.fa-chevron-down
-          .sell__about__right__wrap-box
-            %select{name: "grand-child", class: "select"}
-              %option ---
-              %option Tシャツ
-              %option シャツ
-              %option ポロシャツ
-            %i.fas.fa-chevron-down
-        .sell__about__right__wrap
-          %h3
-            サイズ
-            %span.required
-          .sell__about__right__wrap-box
-            %select{name: "parent", class: "select"}
-              %option ---
-              %option レディース
-              %option メンズ
-              %option ベビー
-            %i.fas.fa-chevron-down
-        .sell__about__right__wrap
-          %h3
-            ブランド
-            %span.required-gray
-          .sell__about__right__wrap-box
-            %input{placeholder: "例）シャネル", class: "form"}
-        .sell__about__right__wrap
-          %h3
-            商品の状態
-            %span.required
-          .sell__about__right__wrap-box
-            %select{name: "parent", class: "select"}
-              %option ---
-              %option レディース
-              %option メンズ
-              %option ベビー
-            %i.fas.fa-chevron-down
-    .sell__about.clearfix
-      .sell__about__left 配送について
-      .sell__about__right
-        .sell__about__right__wrap
-          %h3
-            配送料の負担
-            %span.required
-          .sell__about__right__wrap-box
-            %select{name: "parent", class: "select"}
-              %option ---
-              %option レディース
-              %option メンズ
-              %option ベビー
-            %i.fas.fa-chevron-down
-        .sell__about__right__wrap
-          %h3
-            発送元の地域
-            %span.required
-          .sell__about__right__wrap-box
-            %select{name: "parent", class: "select"}
-              %option ---
-              %option レディース
-              %option メンズ
-              %option ベビー
-            %i.fas.fa-chevron-down
-        .sell__about__right__wrap
-          %h3
-            発送までの日数
-            %span.required
-          .sell__about__right__wrap-box
-            %select{name: "parent", class: "select"}
-              %option ---
-              %option レディース
-              %option メンズ
-              %option ベビー
-            %i.fas.fa-chevron-down
-    .sell__about.clearfix
-      .sell__about__left 販売価格(300〜9,999,999)
-      .sell__about__right
-        .sell__about__right__wrap
-          .sell__about__right__wrap__price
-            %h3.sell__about__right__wrap__price-label
-              価格
-              %span.required
-            .sell__about__right__wrap__price-input
-              ¥
-              .sell__about__right__wrap__price-input-form
-                %input{placeholder: "例）300", class: "form"}
-        .sell__about__right__wrap__fee.clearfix
-          .sell__about__right__wrap__fee-left
-            販売手数料 (10%)
-          .sell__about__right__wrap__fee-right
-            ¥30
-        .sell__about__right__wrap__profit
-          .sell__about__right__wrap__profit-left
-            販売利益
-          .sell__about__right__wrap__profit-right
-            ¥270
-    .sell__about.clearfix
-      .sell__about__bottom
-        .sell__about__bottom-btn
-          = link_to "出品する", '#', class: 'sell__about__bottom-btn submit'
-          = link_to "もどる", '#', class: 'sell__about__bottom-btn back'
-        .sell__about__bottom-text
-          %p
-            禁止されている
-            = link_to '#' do
-              行為
-            および
-            = link_to '#' do
-              出品物
-            を必ずご確認ください。
-          %p
-            = link_to '#' do
-              偽ブランド品
-            や
-            = link_to '#' do
-              盗品物
-            などの販売は犯罪であり、法律により処罰される可能性があります。
-            また、出品をもちまして
-            = link_to '#' do
-              加盟店規約
-            に同意したことになります。
+.new-sale-page
+  .container
+    %h2 商品の情報を入力
+    = form_with model: @product, local: true do |f|
+      .sale-image-box
+        .sale-image-box__head
+          %label 出品画像
+          %span.form-require  必須
+        %p 最大10枚までアップロードできます
+        = f.fields_for :images do |image|
+          .dropzone-container
+            #preview
+            .dropzone-area
+              = image.label :image, class: "dropzone-box", for: "upload-image" do
+                .input_area
+                  = image.file_field :image, id: "upload-image", class: "upload-image", 'data-image': 0
+                %p ここをクリックしてください
+          .dropzone-container
+            #preview2
+            .dropzone-area2
+              = image.label :image, class: "dropzone-box", for: "upload-image" do
+                %p ここをクリックしてください
 
-  %footer.single-footer
-    %nav
-      %ul.clearfix
-        %li
-          = link_to "プライバシーポリシー"
-        %li
-          = link_to "フリマ利用規約"
-        %li
-          = link_to "特定商取引に関する表記"
-    = link_to root_path, class: "single_footer_logo" do
-      =image_tag "logo.png", :size =>'185x49'
-    %p
-      %small © 2020 Frima
+      .sale-content
+        .main-content
+          .main-form-group
+            = label_tag :name do
+              商品名
+              %span.form-require  必須
+            = f.text_field :name, placeholder: "商品名(必須40文字まで)", class: "input-default"
+          .main-form-group
+            = label_tag :detail do
+              %label 商品の説明
+              %span.form-require  必須
+            = f.text_area :detail, class: "textarea-default", rows: '5', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+      .sale-content
+        %h3 商品の詳細
+        .sale-content__form
+          .form-group
+            %label カテゴリー
+            %span.form-require  必須
+            %select#category-first{name: "product[category_id]"}
+            %select#category-second{name: "product[category_id]"}
+            %select#category-third{name: "product[category_id]"}
+          .form-group
+            %label サイズ
+            %span.form-require  必須
+            = f.collection_select(:size_id, Size.all, :id, :name, prompt: "選択して下さい")
+          .form-group
+            %label ブランド
+            %span.form-require__sub 任意
+            .input-box__right
+            = f.collection_select(:brand_id, Brand.all, :id, :name, prompt: "選択して下さい")
+          .form-group
+            %label 商品の状態
+            %span.form-require  必須
+            = f.collection_select(:condition_id, Condition.all, :id, :name, prompt: "選択して下さい")
+      .sale-content
+        %h3 配送について
+        .sale-content__form
+          .form-group
+            %label 配送料の負担
+            %span.form-require  必須
+            = f.select :which_postage, [["送料込み(出品者負担)",0],["着払い(購入者負担)",1]], prompt: "選択して下さい", class: "select"
+          .form-group
+            %label 配送の方法
+            %span.form-require  必須
+            = f.collection_select(:sending_method_id, SendingMethod.all, :id, :name, prompt: "選択して下さい")
+          .form-group
+            %label 配送元の地域
+            %span.form-require  必須
+            = f.select :prefecture, options_for_select(Prefecture.all.map{|c|[c[:name], c[:name]]}), {prompt: "選択して下さい"}
+
+          .form-group
+            %label 配送までの日数
+            %span.form-require  必須
+            = f.select :shipping_date, [["1~2日で発送", 0], ["2~3日で発送", 1], ["4~7日で発送", 2]], prompt: "選択して下さい", class: "select"
+
+      .sale-content
+        %h3 販売価格
+        .sale-content__form
+          .form-group
+            .input-box
+              .input-box__left
+                %label 価格
+                %span.form-require  必須
+              .input-box__right
+                ¥
+                = f.text_field :price, placeholder: '例）300 '
+      .sell-btn-box
+        = f.submit "出品する", class: "sell-btn"
+        = link_to "もどる", "#", class: "back-btn"

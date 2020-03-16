@@ -137,7 +137,7 @@ Things you may want to cover:
 # imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image_url|text|null: false|
+|image|text|null: false|
 |product_id|references|foreign_key: true|
 
 ### Association

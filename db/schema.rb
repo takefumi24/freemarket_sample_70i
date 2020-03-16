@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_110330) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "product_id", null: false
-    t.text "image_url", null: false
+    t.text "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_images_on_product_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_110330) do
     t.integer "shipping_date", null: false
     t.integer "price", null: false
     t.integer "which_postage", null: false
-    t.integer "delivery_status", null: false
+    t.integer "delivery_status", default: 0, null: false
     t.integer "prefecture", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,8 +72,10 @@ ActiveRecord::Schema.define(version: 2020_03_13_110330) do
     t.bigint "condition_id", null: false
     t.bigint "sending_method_id", null: false
     t.bigint "buyer_id"
+    t.bigint "category_id", null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["buyer_id"], name: "index_products_on_buyer_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["condition_id"], name: "index_products_on_condition_id"
     t.index ["sending_method_id"], name: "index_products_on_sending_method_id"
     t.index ["size_id"], name: "index_products_on_size_id"
@@ -124,6 +126,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_110330) do
   add_foreign_key "category_brands", "categories"
   add_foreign_key "images", "products"
   add_foreign_key "products", "brands"
+  add_foreign_key "products", "categories"
   add_foreign_key "products", "conditions"
   add_foreign_key "products", "sending_methods"
   add_foreign_key "products", "sizes"

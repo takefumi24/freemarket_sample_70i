@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  validates :name, :detail, presence: true
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
   has_many :comments
