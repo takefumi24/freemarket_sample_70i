@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       post 'pay', to: 'credit_cards#pay'
       delete 'delete', to: 'credit_cards#delete'
     end
+  end
 
   resources :categories, only: [:index, :show]
 
