@@ -9,6 +9,8 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
+  enum delivery_status: [ "出品中", "取引中", "購入済" ]
+
   def previous
     Product.order("id DESC").where("id < ?", id).first
   end
