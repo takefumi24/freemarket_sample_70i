@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    product = Product.where(delivery_status: 0)
+    product = Product.where(delivery_status: "出品中")
     @products = product.includes(:images).limit(3).order(id: "DESC") 
     @brand_products = brand_ranks(product)
   end
