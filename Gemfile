@@ -44,6 +44,9 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -85,3 +88,7 @@ gem 'font-awesome-sass'
 gem 'active_hash'
 # カテゴリテーブルの階層を実現するgem
 gem 'ancestry'
+gem 'rails-i18n'
+
+gem 'payjp'
+

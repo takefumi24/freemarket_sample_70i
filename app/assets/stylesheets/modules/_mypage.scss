@@ -1,0 +1,291 @@
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.mypage {
+  width: 1020px;      /* 追加 */
+  margin: 40px auto 0;    /* 追加 */
+  padding: 0 0 40px;
+  .my-content {
+    float: right;
+    width: 700px;
+    & ul.sideber-contents {
+      & > li {
+        display: none;
+      }
+      & > .sideActive {
+        display: block;
+      }
+    }
+    // マイページ
+    &__info {
+      height: 200px;
+      padding: 20px;    
+      position: relative;
+      background: url("data:image/jpeg;base64,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");
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      & a {
+        display: block;
+        position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          transform: translate(0, -50%);
+        color: black;
+        width: 120px;
+        text-decoration: none;
+        &:hover {
+          opacity: 0.5;
+        }
+        &:hover > .my-content__info--name > p {
+          display: inline-block;
+          border-bottom: 1px solid black;
+        }
+      }
+      & img {
+        border-radius: 50%;
+      }
+      &--name {
+        font-weight: bold;
+        margin: 10px 0 15px;
+      }
+      &--rating {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    // タブの設定
+    &__tabpage {
+      background: white;
+      width: 100%;
+      min-height: 250px;
+      & .title {
+        line-height: 80px;
+        border-top: 2px solid red;
+        border-bottom: 1px solid lightgray;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+      }
+      & li a {
+        display: block;
+        color: black;
+      }
+      & .tab > a {
+        float: left;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        width: 50%;
+        line-height: 500%;
+        background-color: lightgray;
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+      & ul.tabs li.active a{
+        background-color: white;
+        border-top: 2px solid red;
+      }
+
+      // ページ部分
+      & ul.panels{
+        clear:both;
+        z-index: 1;
+        & li.panel {
+          & a {
+            display: flex;
+            padding: 15px;
+            min-height: 80px;
+            border-bottom: 1px solid lightgray;
+            &:hover {
+              opacity: 0.5;
+            }
+            & img {
+              background-color: lightgray;
+              height: 40px;
+              width: auto;
+              padding: 2px;
+            }
+            & .body {
+              width: 100%;
+              margin: 0 10px;
+              max-height: 4.4em;
+              & .time {
+                display: flex;
+                font-size: 13px;
+                margin-top: 5px;
+                color: gray;
+                & i {
+                  margin-right: 5px;
+                }
+              }
+            }
+            & i {
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
+        & > li.panel {
+          display: none;
+        }
+        & > li.panel.active {
+          display: block;
+        }
+      }
+      &--listLink {
+        padding: 16px;
+        width: 100%;
+        & a {
+          display: block;
+          margin: 0 auto;
+          background: #eee;
+          color: #333;
+          line-height: 56px;
+          text-align: center;
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+    & .purchase {
+      margin: 40px 0 0;
+      & > p {
+        background-color: #eee;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 72px;
+        padding: 0 16px;
+      }
+    }
+  }
+
+  // サイドバーの設定
+  .my-list {
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0;
+    & li {
+      background-color: white;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      min-height: 48px;
+      padding: 16px;
+      font-size: 14px;
+      &:hover {
+        opacity: 0.5;
+      }
+      &:hover > i {
+        transform: translateX(5px);
+      }
+    }
+    & a {
+      text-decoration: none;
+      color: black;
+    }
+    & i {
+      font-size: 16px;
+      padding-right: 5px;
+      transition: 0.3s;
+    }
+    & .active {
+      background-color: #eee;
+      font-weight: 600;
+    }
+    & h3 {
+      margin: 40px 0 5px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+}
+
+
+// ログアウトページ
+.mypage-logout {
+  background-color: white;
+  padding: 60px;
+  & a {
+    display: block;
+    width: 80%;
+    font-size: 14px;
+    line-height: 50px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #48d1cc;
+    color: white;
+  }
+}
+
+// いいね！一覧
+.favorite {
+  padding: 5px;
+  background-color: white;
+  border-top: 2px solid red;
+  & .title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+  }
+  & ul {
+    height: 200px;
+    & li {
+      text-align: center;
+      line-height: 100px;
+      color: rgb(161, 149, 149);
+    }
+  }
+}
+
+// 支払い方法
+.mypage-card {
+  background-color: white;
+  border-top: 2px solid red;
+  & .title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+  }
+  &__pages > li {
+    display: none;
+  }
+  &__pages > .active {
+    display: block;
+  }
+
+  & .create-card {
+    padding: 20px;
+    min-height: 200px;
+    border-top: 1px solid lightgray;
+  }
+  &__btn {
+    line-height: 100px;
+    text-align: center;
+    padding: 30px;
+    & a {
+      display: block;
+      width: 80%;
+      font-size: 14px;
+      line-height: 50px;
+      cursor: pointer;
+      text-align: center;
+      margin: 0 auto;
+      background-color: #48d1cc;;
+      color: white;
+    }
+  }
+} 

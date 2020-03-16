@@ -5,6 +5,9 @@
         = link_to root_path do
           %figure.single-container__header-icon-image
             = image_tag "logo.png", size: '185x49'
+            - if alert
+              %p.alert.alert-error= alert
+
     .progress-bar.signup-bar
       %ol.clearfix
         %li.member-page
@@ -26,7 +29,7 @@
               会員登録が完了しました。
 
           .btn-default.btn-next
-            = link_to 'フリマを始める', root_path
+            = link_to 'フリマを始める', users_show_path
           .form-group.text-right
             %p
               %a{href: "", target: "_blank"}

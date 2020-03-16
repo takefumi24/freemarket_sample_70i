@@ -1,0 +1,28 @@
+.single-container
+  %header.single-header
+    %h1
+      %figure.single-container__header-icon
+        = link_to root_path do
+          %figure.single-container__header-icon-image
+            = image_tag "logo.png", size: '185x49'
+            - if alert
+              %p.alert.alert-error= alert
+  // 情報変更完了画面
+  %main.single-main
+    %section.l-single-container
+      %h2.l-single-head 会員情報変更完了
+      .l-single-inner
+        .l-single-content
+          .form-group
+            %p.form-info-text
+              会員情報変更が完了しました。
+
+          .btn-default.btn-next
+            = link_to 'マイページに戻る', users_show_path
+          .form-group.text-right
+            %p
+              %a{href: "", target: "_blank"}
+                フリマについて
+                %i.fa.fa-angle-right
+
+  = render "layouts/user_footer"
