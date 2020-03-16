@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-        registrations: 'users/registrations'
-      }
+  devise_for :users,
+    controllers: { registrations: 'users/registrations' }
+    get "users/show" => "users#show"
+
   root "products#index"
 
   resources :products, only: [:new, :create, :show, :edit, :update, :destroy] do
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
       post 'pay', to: 'credit_cards#pay'
       delete 'delete', to: 'credit_cards#delete'
     end
-  end
 
   resources :categories, only: [:index, :show]
 

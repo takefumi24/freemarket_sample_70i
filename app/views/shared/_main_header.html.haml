@@ -35,7 +35,11 @@
             = link_to "新規会員登録", new_user_registration_path
         - else
           %li.right-list__content
+            = link_to "いいね！一覧",root_path
+          %li.right-list__content
+            = link_to "お知らせ",root_path
+          %li.right-list__content
+            = link_to "やることリスト",root_path
+          %li.right-list__content
             = link_to "マイページ", user_path(current_user)
             -# 一時的に、ログアウト機能をトップページにも設置しています
-          %li.right-list__content
-            = link_to "ログアウト",destroy_user_session_path, method: :delete
