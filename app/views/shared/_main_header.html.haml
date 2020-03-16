@@ -13,17 +13,18 @@
     .topHeader-contents
       - categories = ["レディース","メンズ","インテリア・住まい・小物","本・音楽・ゲーム","おもちゃ・ホビー・グッズ","コスメ・香水・美容","家電・スマホ・カメラ","スポーツ・レジャー","ハンドメイド","チケット","自動車・オートバイ","その他"]
       - @parent = 0
-      %ul.gnav
-        %li.gnav-category
+      %ul.contents-tab
+        %li.contents-tab__category
           = link_to "#" do
             カテゴリー
-          %ul.list
-            - categories.each do |a|
-              %li
-                = link_to "#" do 
-                  = a
-                = render "top/childLink"
-              - @parent += 1
+          .contents-tab__category--lists
+            %ul.parent
+              - categories.each do |a|
+                %li
+                  = link_to "#" do 
+                    = a
+                  = render "top/childLink"
+                - @parent += 1
         %li.left-list__brand
           = link_to "#" do
             ブランド
