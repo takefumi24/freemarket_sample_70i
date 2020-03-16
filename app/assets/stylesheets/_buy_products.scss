@@ -1,0 +1,134 @@
+.content-head-img {
+  width: 100%;
+  height: 88px;
+  text-align: center;
+  img {
+    width: 185px;
+    height: 49px;
+  }
+}
+.buy-confirmation {
+  background: #fff;
+  .buy-head {
+    margin: 0;
+    text-align: center;
+    font-size: 22px;
+    padding: 32px;
+    font-weight: bold;
+  }
+  .buy-product {
+    padding: 32px 16px;
+    border-top: 1px solid #f5f5f5;
+    .buy-item {
+      display: flex;
+      max-width: 343px;
+      margin: 0 auto;
+      &__img {
+        width: auto;
+        max-height: 80px;
+      }
+      &__info {
+        margin-left: 16px;
+        &__name {
+          margin: 0;
+          font-size: 14px;
+          padding-bottom: 8px;
+        }
+        &__price {
+          font-size: 17px;
+          font-weight: bold;
+        }
+        &__fee {
+          font-size: 14px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .buy-content {
+    padding: 32px 16px 42px;
+    border-top: 1px solid #f5f5f5;
+    .buy-form {
+      max-width: 343px;
+      margin: 0 auto;
+      .buy-price {
+        width: 100%;
+        font-weight: bold;
+        margin-bottom: 32px;
+        display: table;
+        &__head {
+          font-size: 18px;
+        }
+        &__int {
+          font-size: 25px;
+          display: table-cell;
+          text-align: right;
+        }
+      }
+      .payment-method {
+        border-top: 1px solid #f5f5f5;
+        padding: 32px 0;
+        &__head {
+          font-size: 14px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        &__text {
+          font-size: 14px;
+          color: #0099e8;
+          text-decoration: none;
+          &--plus {
+            border: .5px solid #0099e8;
+            border-radius: 50%;
+          }
+        }
+        &__text:hover {
+          border-bottom: 1px solid #0099e8;
+        }
+      }
+      .shipping-address {
+        padding: 32px 0;
+        border-top: 1px solid #f5f5f5;
+        border-bottom: 1px solid #f5f5f5;
+        &__head {
+          font-size: 14px;
+          display: table;
+          width: 100%;
+          span {
+            font-weight: bold;
+          }
+          div {
+            display: table-cell;
+            text-align: right;
+            a {
+              color: #0099e8;
+              text-decoration: none;
+            }
+            a:hover {
+              opacity: .7;
+            }
+          }
+        }
+        &__text {
+          margin: 0;
+          margin-top: 8px;
+          font-size: 14px;
+        }
+      }
+      .buy-button {
+        padding-top: 32px;
+        button {
+          width: 100%;
+          height: 50px;
+          background: #3CCACE;
+          color: #fff;
+          border: none;
+          font-weight: bold;
+        }
+        button:hover {
+          opacity: .7;
+        }
+      }
+    }
+  }
+}

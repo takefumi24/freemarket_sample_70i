@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_105256) do
+ActiveRecord::Schema.define(version: 2020_03_13_110330) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2020_03_10_105256) do
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,28 +82,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_105256) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
-  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "family_name", null: false
-    t.string "name", null: false
-    t.string "family_name_kana", null: false
-    t.string "name_kana", null: false
-    t.integer "prefecture", null: false
-    t.string "city", null: false
-    t.string "street", null: false
-    t.string "building", null: false
-    t.text "image"
-    t.text "introduction"
-    t.integer "postal_code", null: false
-    t.integer "phone"
-    t.integer "birth_year", null: false
-    t.integer "birth_month", null: false
-    t.integer "birth_day", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
   create_table "sending_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -112,6 +98,21 @@ ActiveRecord::Schema.define(version: 2020_03_10_105256) do
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "family_name", null: false
+    t.string "name", null: false
+    t.string "family_name_kana", null: false
+    t.string "name_kana", null: false
+    t.integer "prefecture", null: false
+    t.string "city", null: false
+    t.string "street", null: false
+    t.string "building"
+    t.text "image"
+    t.text "introduction"
+    t.integer "postal_code", null: false
+    t.string "phone"
+    t.integer "birth_year", null: false
+    t.integer "birth_month", null: false
+    t.integer "birth_day", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -131,5 +132,4 @@ ActiveRecord::Schema.define(version: 2020_03_10_105256) do
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "users"
   add_foreign_key "products", "users", column: "buyer_id"
-  add_foreign_key "profiles", "users"
 end
