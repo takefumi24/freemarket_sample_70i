@@ -12,7 +12,7 @@
 
       .content__btn
         = link_to "#" do
-          =image_tag "http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg"
+          =image_tag "https://ashidaiin.com/wp-content/uploads/2018/01/app-store.png"
         = link_to "#" do
           =image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQUWgBU055_AbmuItYPL0LYNnDctNdkf45G4-4TfmxsCZKHAsek"
 
@@ -22,7 +22,7 @@
     %ul.Introduction-lists
       %li.list
         .list--pict
-          =image_tag "/assets/pict-reason-01.jpg"
+          =image_tag "http://furima.tokyo/assets/pict-reason-01-77b860b45f32923029756050dafc0f6df01a36675414b0f26f127c64a53baaea.jpg"
           .number
             1
         .text
@@ -34,7 +34,7 @@
 
       %li.list
         .list--pict
-          =image_tag "/assets/pict-reason-02.jpg"
+          =image_tag "http://furima.tokyo/assets/pict-reason-02-3471b96ea7b52654510992e57dc05af07926de0836200059b7fa4ead05ee4d56.jpg"
           .number
             2
         .text
@@ -45,7 +45,7 @@
           めんどくさい入力は必要なく、検索も購入もスムーズ！
       %li.list.list--last
         .list--pict
-          =image_tag "/assets/pict-reason-03.jpg"
+          =image_tag "http://furima.tokyo/assets/pict-reason-03-1e3c743f3ba3db8c43987d2e257916a615aa8fc59c02bbc116f041a5580ec28f.jpg"
           .number
             3
         .text
@@ -77,7 +77,7 @@
     %ul.feature-lists
       %li.list
         .list--pict
-          =image_tag "/assets/icon-01.png"
+          =image_tag "http://furima.tokyo/assets/icon-01-7f6abf70ea7deaed9ab5d8b6d5cb796250e3e292b9ecdc559ebe6492c31fdab8.svg"
         .text
           簡単に売り買いできる 
         %p.description 
@@ -85,43 +85,70 @@
 
       %li.list
         .list--pict
-          =image_tag "/assets/icon-03.png"
+          =image_tag "http://furima.tokyo/assets/icon-03-9c0d78266a316fec7b738dcf5c68dd987afb9655b13fd2cd5d30bcf09e827694.svg"
         .text
           売上金は即日振込みに対応 
         %p.description
           午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
       %li.list.list--last
         .list--pict
-          =image_tag "/assets/icon-04.png"
+          =image_tag "http://furima.tokyo/assets/icon-04-c4052f85cd6e1f62ea8cac8c55277d7fa4bda971d924f8a2afe72eea6558fa85.svg"
         .text
           様々な支払いに対応 
         %p.description 
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
 
-  //カテゴリ一覧
+  //すべてのカテゴリ一覧
   .pickupContainer
     .pickupContainer__title
       カテゴリ一覧
     .pickupContainer__box
       .pickupContainer__box--subtitle
         = link_to "#" do
-          新着アイテム
+          全ての商品
       .pickupContainer__box--categories
-        - @products.each do |product|
-          .category
-            = link_to product_path(product.id), class: "category__link" do
-              .category__link--img
-                = image_tag product.images[0].image_url
-              .category__link--text
-                = product.name
-                %ul
-                  %li
-                    = product.price
-                    円
-                  %li
-                    = icon("fa", "star", 0)
-                %p.tax 
-                  (税込)
+        .category
+          = link_to "#", class: "category__link" do
+            .category__link--img
+              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+            .category__link--text
+              %p product3
+              %ul
+                %li
+                  30000円
+                %li
+                  %i.fa.fa-star.likeIcon 
+                  0
+              %p.tax 
+                (税込)
+        .category
+          = link_to "#", class: "category__link" do
+            .category__link--img
+              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+            .category__link--text
+              %p product3
+              %ul
+                %li
+                  30000円
+                %li
+                  %i.fa.fa-star.likeIcon 
+                  0
+              %p.tax 
+                (税込)
+        .category
+          = link_to "#", class: "category__link" do
+            .category__link--img
+              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+            .category__link--text
+              %p product3
+              %ul
+                %li
+                  30000円
+                %li
+                  %i.fa.fa-star.likeIcon 
+                  0
+              %p.tax 
+                (税込)
                 
   //ピックアップブランド
   .pickupContainer
@@ -130,27 +157,50 @@
     .pickupContainer__box
       .pickupContainer__box--subtitle
         = link_to "#" do
-          新着ブランド一覧
+          アーカイバ
       .pickupContainer__box--categories
-        - @brand_products.each do |product,i|
-          .category
-            = link_to product_path(product.id), class: "category__link" do
-              .category--rank
-                = icon("fas", "crown")
-                = product.brand.name
-              .category__link--img
-                = image_tag product.images[0].image_url
-              .category__link--text
-                = product.name
-                %ul
-                  %li
-                    = product.price
-                    円
-                  %li
-                    = icon("fa", "star", 0)
-                %p.tax 
-                  (税込)
-
+        .category
+          = link_to "#", class: "category__link" do
+            .category__link--img
+              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+            .category__link--text
+              %p product3
+              %ul
+                %li
+                  30000円
+                %li
+                  %i.fa.fa-star.likeIcon 
+                  0
+              %p.tax 
+                (税込)
+        .category
+          = link_to "#", class: "category__link" do
+            .category__link--img
+              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+            .category__link--text
+              %p product3
+              %ul
+                %li
+                  30000円
+                %li
+                  %i.fa.fa-star.likeIcon 
+                  0
+              %p.tax 
+                (税込)
+        .category
+          = link_to "#", class: "category__link" do
+            .category__link--img
+              =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+            .category__link--text
+              %p product3
+              %ul
+                %li
+                  30000円
+                %li
+                  %i.fa.fa-star.likeIcon 
+                  0
+              %p.tax 
+                (税込)
 .appBannar
   .appBannar__inner
     .appBannar__inner--title
