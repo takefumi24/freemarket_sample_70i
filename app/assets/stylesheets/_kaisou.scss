@@ -1,99 +1,64 @@
-.gnav {
-  height: 2rem;
-}
-.gnav > li {/*親階層のみ幅を25%にする*/
-  margin-right: 30px;
-  list-style-type: none;
-  display: inline-block; 
-}
+.contents-tab {
+  height: 1rem;
+  z-index: 999;
 
-/*全てのリスト・リンク共通*/
-.gnav li {
-  z-index: 2;
-  list-style: none;
-  &:hover{
-    color: orange;
+  /*子階層以降共通*/
+  & li li {
+    display: none;
+    transition: .5s;
+    & a {
+      padding: 5px  50px 5px 10px;
+    }
+  }
+  
+  &__category {/*親階層のみ幅を25%にする*/
+    margin-right: 30px;
+    list-style-type: none;
+    display: inline-block; 
+    &--lists {
+      position: relative;
+      background-color: white;
+      & ul {
+        box-shadow: rgba(0, 0, 0, 0.18) 0px 5px 6px;
+      }
+      & .child {
+        left: 100%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        & .grandChild {
+          width: 100%;
+          position: absolute;
+            top: 0;
+            left: 100%;
+        }
+      }
+    }
+  }
+  & .left-list__brand {
+    position: absolute;
+      top: 0;
+      margin-left: 100px;
   }
 }
-.gnav li a {
-  display: block;
-  text-align: left;
-  text-decoration: none;
+
+// ホバー処理
+.contents-tab li:hover .parent > li {
+    display: block;
+  }
+
+.parent > li:hover > .child {
+  background-color: white;
+  min-height: 100%;
+  & > li {
+    display: block;
+  }
 }
 
-.list {
-  position: relative;
+.child > li:hover > .grandChild {
+  background-color: white;
+  min-height: 100%;
+  & > li {
+    display: block;
+  }
 }
-/*子階層以降共通*/
-.gnav li li {
-  height: 0;
-  display: none;
-  transition: .5s;
-}
-.gnav li li a {
-  border-bottom: 1px solid lightgray;
-  padding: 0  50px 0 10px;
-}
-.gnav li:hover > ul > li {
-  height: 100%;
-  display: block;
-}
-.gnav li ul li ul {
-  left: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-/*一番右のメニュー*/
-.gnav > li:nth-child(5) ul li ul {
-  left: -100%;
-}
-/*aの背景色を指定*/  
-.gnav-category {
-  position: absolute;
-  left: 0;
-} 
-.left-list__brand {
-  position: absolute;
-    margin-left: 100px;
-}
-.gnav li:hover a {/*親階層*/
-}
-.gnav li li a {/*子階層*/
-  background: white;
-}
-.gnav li li:hover a {
-  background: white;
-}
-.gnav li ul li ul li a {/*孫階層*/
-  background: white;
-}
-.gnav li ul li ul li:hover a {
-  background: white;
-}
-
-// /*リストに「▶︎」を付ける*/
-// .gnav > li > ul:before{/*子階層*/
-//   border: 5px solid transparent;
-//   border-top: 5px solid #fff;
-//   content: "";
-//   right: 1rem;
-//   position: absolute;
-//   top: 1rem;
-//   transform: translateY(-40%);
-// }
-// .gnav li ul li ul:before {/*孫階層*/
-//   border: 5px solid transparent;
-//   border-left: 5px solid #fff;
-//   content: "";
-//   left: -20px;
-//   position: absolute;
-//   top: 1em;
-//   transform: translateY(-50%);
-// }
-// .gnav li:nth-child(5) ul li ul:before {/*一番右のメニューの孫階層*/
-//   border: 5px solid transparent;
-//   border-right: 5px solid #fff;
-//   left: auto;
-//   right: -20px;
-// }
