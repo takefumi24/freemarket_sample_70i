@@ -3,7 +3,7 @@
 
   .creditCard__main
     %h1 クレジットカード情報入力
-    = form_with url: user_credit_cards_path, method: :post, class: "creditCard__form", html: { name: "inputForm" } do |f| 
+    = form_with model: @card, url: {controller: 'credit_cards', action: 'pay'}, method: :post, class: "creditCard__form", id: "creditCard_form", html: { name: "inputForm" }, local: true do |f| 
       
       = f.label :カード番号, class: 'label'
       %span.required 必須
