@@ -109,6 +109,7 @@
       .pickupContainer__box--categories
         - @products.each do |product|
           .category
+            -# - binding.pry
             = link_to product_path(product.id), class: "category__link" do
               .category__link--img
                 = image_tag product.images[0].image_url
@@ -139,7 +140,7 @@
                 = icon("fas", "crown")
                 = product.brand.name
               .category__link--img
-                = image_tag product.images[0].image_url
+                -# = image_tag product.images[0].image_url
               .category__link--text
                 = product.name
                 %ul
