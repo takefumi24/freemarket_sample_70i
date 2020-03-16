@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-        registrations: 'users/registrations'
-      }
+  devise_for :users,
+    controllers: { registrations: 'users/registrations' }
+    get "users/show" => "users#show"
+
   root "products#index"
 
   resources :products, only: [:new, :create, :show, :edit, :update, :destroy] do
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :new, :create] do
+  resources :users, only: [:show, :new, :create, :edit, :update] do
     resources :credit_cards, only: [:new, :create]
   end
 
