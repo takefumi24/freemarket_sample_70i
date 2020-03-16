@@ -7,47 +7,14 @@
       .item-container__header
         = "#{@category.name}の商品一覧"
       .items
-        =link_to "#", class: 'item' do
-          = image_tag 'logo.png',size: '188x188', class: 'item__image'
-          .item__body
-            %h3.item__body__name
-              セーラー服
-            .item__body__price
-              ¥ 30,000
-        =link_to "#", class: 'item' do
-          = image_tag 'logo.png',size: '188x188', class: 'item__image'
-          .item__body
-            %h3.item__body__name
-              セーラー服
-            .item__body__price
-              ¥ 30,000
-        =link_to "#", class: 'item' do
-          = image_tag 'logo.png',size: '188x188', class: 'item__image'
-          .item__body
-            %h3.item__body__name
-              セーラー服
-            .item__body__price
-              ¥ 30,000
-        =link_to "#", class: 'item' do
-          = image_tag 'logo.png',size: '188x188', class: 'item__image'
-          .item__body
-            %h3.item__body__name
-              セーラー服
-            .item__body__price
-              ¥ 30,000
-        =link_to "#", class: 'item' do
-          = image_tag 'logo.png',size: '188x188', class: 'item__image'
-          .item__body
-            %h3.item__body__name
-              セーラー服
-            .item__body__price
-              ¥ 30,000
-        =link_to "#", class: 'item' do
-          = image_tag 'logo.png',size: '188x188', class: 'item__image'
-          .item__body
-            %h3.item__body__name
-              セーラー服
-            .item__body__price
-              ¥ 30,000
+        - (1..20).each do |i|
+          =link_to "#", class: 'item' do
+            = image_tag 'logo.png',size: '188x188', class: 'item__image'
+            .item__body
+              %h3.item__body__name
+                柔道着
+              .item__body__price
+                ¥ 30,000
+
     .category-label
       = @parent.present? ? "#{@category.name}(#{@parent.name})" : @category.name

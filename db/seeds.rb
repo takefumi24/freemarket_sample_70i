@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# カテゴリのレコード追加
 # 大カテゴリ
 ladies = Category.create(name: "レディース")
 mens = Category.create(name: "メンズ")
@@ -21,7 +20,6 @@ handmades = Category.create(name: "ハンドメイド")
 tickets = Category.create(name: "チケット")
 automobiles = Category.create(name: "自動車・オートバイ")
 others = Category.create(name: "その他")
-
 # 中カテゴリ(レディース)
 ladies_tops = ladies.children.create(name: "トップス")
 ladies_jeckets = ladies.children.create(name: "ジャケット/アウター")
@@ -130,7 +128,6 @@ others_array.each do |name|
   others_sub.push(sub_category)
 end
 
-
 # 小カテゴリ(レディース)
 ladies_tops.children.create([{name: "Tシャツ/カットソー(半袖/袖なし)"},{name: "Tシャツ/カットソー(七分/長袖)"},{name: "シャツ/ブラウス(半袖/袖なし)"},{name: "シャツ/ブラウス(七分/長袖)"},
   {name: "ポロシャツ"},{name: "キャミソール"},{name: "タンクトップ"},{name: "ホルターネック"},{name: "ニット/セーター"},{name: "チュニック"},{name: "カーディガン/ボレロ"},{name: "アンサンブル"},{name: "ベスト/ジレ"},{name: "パーカー"}])
@@ -154,7 +151,6 @@ ladies_hear_accesories.children.create([{name: "ヘアゴム/シュシュ"},{nam
 ladies_trinkets.children.create([{name: "長財布"},{name: "折り財布"},{name: "コインケース/小銭入れ"},{name: "名刺入れ/定期入れ"},{name: "キーケース"},{name: "キーホルダー"},
   {name: "手袋/アームカバー"},{name: "ハンカチ"},{name: "ベルト"},{name: "マフラー/ショール"},{name: "ストール/スヌード"},{name: "バンダナ/スカーフ"},{name: "ネックウォーマー"},{name: "サスペンダー"}])
 ladies_watch.children.create([{name: "腕時計(アナログ)"},{name: "腕時計(デジタル)"},{name: "ラバーベルト"},{name: "レザーベルト"},{name: "金属ベルト"},{name: "その他"}])
-
 # 小カテゴリ(メンズ)
 mens_tops.children.create([{name: "Tシャツ/カットソー(半袖/袖なし)"},{name: "Tシャツ/カットソー(七分/長袖)"},{name: "シャツ"},{name: "ポロシャツ"},
   {name: "タンクトップ"},{name: "ニット/セーター"},{name: "パーカー"},{name: "カーディガン"},{name: "スウェット"},{name: "ジャージ"},{name: "ベスト"},{name: "その他"}])
@@ -385,7 +381,6 @@ others_sub.each_with_index do |sub, i|
     sub.children.create(name: name)
   end
 end
-
 
 require './db/seeds/brand.rb'
 require './db/seeds/condition.rb'
