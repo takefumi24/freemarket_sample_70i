@@ -10,8 +10,10 @@
         .buy-item
           =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class: "buy-item__img"
           .buy-item__info
-            %p.buy-item__info__name product3
-            %span.buy-item__info__price ¥30000
+            %p.buy-item__info__name 
+              = @product.name
+            %span.buy-item__info__price
+              = @product.price
             %span.buy-item__info__fee （税込） 送料込み
       .buy-content
         %form.buy-form
@@ -29,13 +31,14 @@
               %div
                 =link_to "変更する"
             %p.shipping-address__text
-              〒150-0043
+              〒
+              = @user.postal_code
               %br
               東京都渋谷区道玄坂２丁目２３−１２ フォンティスビル ７F
               %br
               TECH CAMP
           .buy-button
             %button
-              = link_to "購入する", product_purchases_path(@product.id)
+              = link_to "購入する",  done_product_purchase_path(@product.id)
     
     =render "layouts/user_footer"

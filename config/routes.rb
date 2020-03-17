@@ -9,9 +9,8 @@ Rails.application.routes.draw do
       get 'buy'
     end
     resources :purchases, only: [:index] do
-      collection do
+      member do
         get 'done', to: 'purchases#done'
-        post 'pay', to: 'purchases#pay'
       end
     end
   end

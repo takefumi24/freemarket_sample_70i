@@ -50,6 +50,8 @@ class ProductsController < ApplicationController
 
   def buy
     @product = Product.find(params[:id])
+    @user = current_user
+    @prefecture = Prefecture.find(@user.prefecture)
   end 
 
   def product_params
