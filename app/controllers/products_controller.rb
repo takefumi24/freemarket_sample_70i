@@ -31,12 +31,41 @@ class ProductsController < ApplicationController
 
   def edit
     # 編集機能実装用
-    # @product = Product.find(params[:id])
+    @product = Product.find(params[:id])
+
+    # @parent = Category.where(ancestry:nil)
+    # @selected_grandchild_category = @product.category
+
+    # @category_grandchildren_array = [{id: "---", name: "---"}]
+
+    # Category.find("#{@selected_grandchild_category.id}").siblings.each do |grandchild|
+    #   grandchildren_hash = {id: "#{grandchild.id}", name: "#{grandchild.name}"}
+    #   @category_grandchildren_array << grandchildren_hash
+    # end
+    # @selected_child_category = @selected_grandchild_category.parent
+    # @category_children_array = [{id: "---", name: "---"}]
+    # Category.find("#{@selected_child_category.id}").siblings.each do |child|
+    #   children_hash = {id: "#{child.id}", name: "#{child.name}"}
+    #   @category_children_array << children_hash
+    # end
+    # @selected_parent_category = @selected_child_category.parent
+    # @category_parents_array = [{id: "---", name: "---"}]
+    # Category.find("#{@selected_parent_category.id}").siblings.each do |parent|
+    #   parent_hash = {id: "#{parent.id}", name: "#{parent.name}"}
+    #   @category_parents_array << parent_hash
+    # end
+
+    @prefecture = Prefecture.find(@product.prefecture)
   end
 
   def update
     # 編集機能実装用
-    # product = Product.find(params[:id])
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
     # product.update(product_params)
     # redirect_to action: :show
   end
@@ -52,7 +81,7 @@ class ProductsController < ApplicationController
   end 
 
     def product_params
-      params.require(:product).permit(:name, :category_id, :brand_id, :price, :detail, :condition_id, :which_postage, :sending_method_id, :size_id, :prefecture, :shipping_date, images_attributes: [:image]).merge(user_id: 1)
+      params.require(:product).permit(:name, :category_id, :brand_id, :price, :detail, :condition_id, :which_postage, :sending_method_id, :size_id, :prefecture, :shipping_date, images_attributes: [:image, :_destroy, :id]).merge(user_id: 1)
     end 
 
 end

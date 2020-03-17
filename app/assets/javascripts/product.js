@@ -13,6 +13,9 @@ $(function () {
   var input_area = $('.input_area');
   var preview = $('#preview');
   var preview2 = $('#preview2');
+
+
+
   // ページ遷移後にカテゴリ一覧を取得
   $.getJSON(
     '/category',
@@ -85,6 +88,7 @@ $(function () {
       alert('カテゴリは全て入力してください')
     }
   })
+
   // 画像を選択したときのアクション
   $(document).on('change', 'input[type= "file"].upload-image', function (event) {
     var file = $(this).prop('files')[0];

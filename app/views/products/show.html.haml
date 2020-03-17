@@ -9,10 +9,10 @@
       %ul
         -@product.images.each do |image|
           %li.show-slide
-            =image_tag image.image_url, class: "main-image"
+            =image_tag image.image.url, class: "main-image"
       .content-images
         -@product.images.each do |image|
-          =image_tag image.image_url, class: "content-images__list"
+          =image_tag image.image.url, class: "content-images__list"
       .price-content
         .price-content__price
           %span 
@@ -50,7 +50,7 @@
         %tr
           %td.content-info__name ブランド
           %td.content-info__text
-            =@product.brand.name
+            =@product.brand.name if @product.brand
         %tr
           %td.content-info__name 商品のサイズ
           %td.content-info__text

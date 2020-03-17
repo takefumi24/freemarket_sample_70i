@@ -1,1 +1,100 @@
-products#edit
+.new-sale-page
+  .container
+    %h2 商品の情報を入力
+    = form_with model: @product, local: true do |f|
+      .sale-image-box
+        .sale-image-box__head
+          %label 出品画像
+          %span.form-require  必須
+        %p 最大10枚までアップロードできます
+        .dropzone-container
+          #preview
+            - if @product.persisted?
+              - @product.images.each_with_index do |image, i|
+                .img_view
+                  = image_tag image.image.url, width: "100", height: '100', data: { image: i }
+                  .btn_wrapper
+                    .delete-img-btn 削除
+        = f.fields_for :images do |image|
+          .dropzone-container
+            = image.check_box :_destroy, data:{ image: image.index }, class: "hidden-destroy"
+            .dropzone-area
+              = image.label :image, class: "dropzone-box", for: "upload-image" do
+                .input_area
+                  = image.file_field :image, id: "upload-image", class: "upload-image", 'data-image': image.index
+                %p ここをクリックしてください
+          .dropzone-container
+            #preview2
+            .dropzone-area2
+              = image.label :image, class: "dropzone-box", for: "upload-image" do
+                %p ここをクリックしてください
+
+      .sale-content
+        .main-content
+          .main-form-group
+            = label_tag :name do
+              商品名
+              %span.form-require  必須
+            = f.text_field :name, placeholder: "商品名(必須40文字まで)", class: "input-default"
+          .main-form-group
+            = label_tag :detail do
+              %label 商品の説明
+              %span.form-require  必須
+            = f.text_area :detail, class: "textarea-default", rows: '5', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+      .sale-content
+        %h3 商品の詳細
+        .sale-content__form
+          .form-group
+            %label カテゴリー
+            %span.form-require  必須
+            %select#category-first{name: "product[category_id]"}
+            %select#category-second{name: "product[category_id]"}
+            %select#category-third{name: "product[category_id]"}
+          .form-group
+            %label サイズ
+            %span.form-require  必須
+            = f.collection_select(:size_id, Size.all, :id, :name, prompt: "選択して下さい")
+          .form-group
+            %label ブランド
+            %span.form-require__sub 任意
+            .input-box__right
+            = f.collection_select(:brand_id, Brand.all, :id, :name, prompt: "選択して下さい")
+          .form-group
+            %label 商品の状態
+            %span.form-require  必須
+            = f.collection_select(:condition_id, Condition.all, :id, :name, prompt: "選択して下さい")
+      .sale-content
+        %h3 配送について
+        .sale-content__form
+          .form-group
+            %label 配送料の負担
+            %span.form-require  必須
+            = f.select :which_postage, [["送料込み(出品者負担)",0],["着払い(購入者負担)",1]], prompt: "選択して下さい", class: "select"
+          .form-group
+            %label 配送の方法
+            %span.form-require  必須
+            = f.collection_select(:sending_method_id, SendingMethod.all, :id, :name, prompt: "選択して下さい")
+          .form-group
+            %label 配送元の地域
+            %span.form-require  必須
+            = f.select :prefecture, options_for_select(Prefecture.all.map{|c|[c[:name], c[:id]]}, @prefecture.id), {prompt: "選択して下さい"}
+
+          .form-group
+            %label 配送までの日数
+            %span.form-require  必須
+            = f.select :shipping_date, [["1~2日で発送", 0], ["2~3日で発送", 1], ["4~7日で発送", 2]], prompt: "選択して下さい", class: "select"
+
+      .sale-content
+        %h3 販売価格
+        .sale-content__form
+          .form-group
+            .input-box
+              .input-box__left
+                %label 価格
+                %span.form-require  必須
+              .input-box__right
+                ¥
+                = f.text_field :price, placeholder: '例）300 '
+      .sell-btn-box
+        = f.submit "出品する", class: "sell-btn"
+        = link_to "もどる", "#", class: "back-btn"
