@@ -1,4 +1,4 @@
-$(function () {
+$(document).on('turbolinks:load', function() {
   // タブページの処理
   $(".tabs a").on('click', function(e) {
     e.preventDefault();
@@ -15,12 +15,17 @@ $(function () {
   // サイドバーの処理
   $(".lists li").on('click', function(e) {
     e.preventDefault();
-    $('.my-list li').removeClass('active');
-    $(this).addClass('active');
     targetLink = $(this).children('a');
     target = $(targetLink).attr('href');
-    if (! $(target).length) return false;
-    $('.sideber-contents li').removeClass('sideActive');
-    $(target).addClass('sideActive');
+
+    if ($(this).attr('class') == "sideLink") {
+      location.pathname = target;  // 画面遷移
+    } else if ($(target).length) {
+      $('.sideber-contents li').removeClass('sideActive');
+      $(target).addClass('sideActive');
+    }
+
+    $('.my-list li').removeClass('active');
+    $(this).addClass('active');
   });
 });
