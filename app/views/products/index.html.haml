@@ -111,7 +111,7 @@
           .category
             = link_to product_path(product.id), class: "category__link" do
               .category__link--img
-                = image_tag product.images[0].image_url
+                = image_tag product.images[0].image.url
               .category__link--text
                 = product.name
                 %ul
@@ -139,7 +139,7 @@
                 = icon("fas", "crown")
                 = product.brand.name
               .category__link--img
-                = image_tag product.images[0].image_url
+                = image_tag product.images[0].image.url
               .category__link--text
                 = product.name
                 %ul
