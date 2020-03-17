@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include CommonActions
+  before_action :set_categories
   
   def show
     card = CreditCard.where(user_id: current_user.id).first
