@@ -69,7 +69,7 @@
           .form-group
             %label 配送元の地域
             %span.form-require  必須
-            = f.select :prefecture, options_for_select(Prefecture.all.map{|c|[c[:name], c[:name]]}), {prompt: "選択して下さい"}
+            = f.select :prefecture, options_for_select(Prefecture.all.map{|c|[c[:name], c[:id]]}), {prompt: "選択して下さい"}
 
           .form-group
             %label 配送までの日数

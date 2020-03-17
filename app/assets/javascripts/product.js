@@ -100,70 +100,10 @@ $(function () {
     }
     reader.readAsDataURL(file);
     images.push(img);
-    if (images.length <= 4) {
-      $('#preview').empty();
-      $.each(images, function (index, image) {
-        image.data('image', index);
-        preview.append(image);
-      })
-      dropzone.css({
-        'width': `calc(100% - (20% * ${images.length}))`
-      })
-      // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
-    } else if (images.length == 5) {
-      $("#preview").empty();
-      $.each(images, function (index, image) {
-        image.data("image", index);
-        preview.append(image);
-      });
-      dropzone2.css({
-        display: "block"
-      });
-      dropzone.css({
-        display: "none"
-      });
-      preview2.empty();
 
-      // 画像が６枚以上のとき
-    } else if (images.length >= 6) {
-      // １〜５枚目の画像を抽出
-      var pickup_images1 = images.slice(0, 5);
-
-      // １〜５枚目を１段目に表示
-      $('#preview').empty();
-      $.each(pickup_images1, function (index, image) {
-        image.data('image', index);
-        preview.append(image);
-      })
-
-      // ６枚目以降の画像を抽出
-      var pickup_images2 = images.slice(5);
-
-      // ６枚目以降を２段目に表示
-      $.each(pickup_images2, function (index, image) {
-        image.data('image', index + 5);
-        preview2.append(image);
-      })
-
-      dropzone.css({
-        'display': 'none'
-      })
-      dropzone2.css({
-        'display': 'block',
-        'width': `calc(100% - (20% * ${images.length - 5}))`
-      })
-
-      // 画像が１０枚になったら枠を消す
-      if (images.length == 10) {
-        dropzone2.css({
-          display: "none"
-        });
-      }
-    }
+    redrawImages();
     var new_image = $(`<input name="product[images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image);
-    $.each(input_area.children(), function (index, input) {
-    })
   });
   $(document).on('click', '.delete-img-btn', function () {
     var target_image = $(this).parent().parent();
@@ -194,6 +134,9 @@ $(function () {
       })
       $('input[type= "file"].upload-image:first').after(input)
     })
+    redrawImages();
+  })
+  function redrawImages() {
     if (images.length <= 4) {
       $('#preview').empty();
       $.each(images, function (index, image) {
@@ -259,7 +202,5 @@ $(function () {
         });
       }
     }
-    $.each(input_area.children(), function (index, input) {
-    })
-  })
+  }
 })
