@@ -86,3 +86,48 @@
     }
   }
 }
+
+// 登録済みの場合のビュー
+.card-edit {
+  display: flex;
+  & i {
+    font-size: 80px;
+    margin-right: 30px;
+    color: #48d1cc;
+  }
+  .create-card__info {
+    margin-top: 10px;
+    
+    .info-content {
+      display: flex;
+      font-size: 20px;
+      & p {
+        margin-right: 30px;
+      }
+    }
+    & .exp {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      & p {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+// 削除ボタン
+.effectiveDate {
+  text-align: center;
+  margin-top: 30px;
+  & .button {
+    margin: 0 auto;
+    line-height: 4em;
+    color:  white;
+    text-decoration: none;
+    border: none;
+    background-color: #48d1cc;
+    width: 100%;
+    cursor: pointer;
+  }
+}
