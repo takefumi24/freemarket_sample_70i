@@ -5,8 +5,14 @@ Rails.application.routes.draw do
 
   root "products#index"
   resources :products, only: [:new, :create, :show, :edit, :update, :destroy] do
-    collection do
+    member do
       get 'buy'
+    end
+    resources :purchases, only: [:index] do
+      collection do
+        get 'done', to: 'purchases#done'
+        post 'pay', to: 'purchases#pay'
+      end
     end
   end
 

@@ -35,6 +35,7 @@
               %br
               TECH CAMP
           .buy-button
-            %button 購入する
+            %button
+              = link_to "購入する", product_purchases_path(@product.id)
     
     =render "layouts/user_footer"
