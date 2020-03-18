@@ -15,12 +15,6 @@ describe User do
       expect(user.errors[:email]).to include("を入力してください", "を入力してください")
     end
 
-    # it "cannot sign up with mismatched password and confirmation" do
-    #   user = FactoryBot.build(:user, password_confirmation: "00000000")
-    #   user.valid?
-    #   expect(user.errors[:password_confirmation]).to include("Password confirmationとPasswordの入力が一致しません")
-    # end
-
     it "is match password" do
       user = FactoryBot.build(:user, email: "test@test.com", password: "hogehoge", password_confirmation: "hogehoge")
       user.valid?

@@ -39,6 +39,9 @@
               = "#{@prefecture.name} #{@user.city} #{@user.street} #{@user.building}"
           .buy-button
             %button
-              = link_to "購入する", done_product_purchase_path(@product.id)
+              -if @user.id == @card.id
+                = link_to "購入する", done_product_purchase_path(@product.id)
+              -else
+                = link_to "購入する", new_credit_card_path
     
     =render "layouts/user_footer"

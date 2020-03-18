@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     member do
       get 'buy'
     end
-    resources :purchases, only: [:index] do
+    resources :purchases, only: [] do
       member do
         get 'done', to: 'purchases#done'
       end
