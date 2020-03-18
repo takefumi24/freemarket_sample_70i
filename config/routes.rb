@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root "products#index"
   resources :products, only: [:new, :create, :show, :edit, :update, :destroy] do
-    collection do
+    member do
       get 'buy'
     end
   end

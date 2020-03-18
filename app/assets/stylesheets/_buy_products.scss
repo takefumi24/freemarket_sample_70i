@@ -23,24 +23,26 @@
       display: flex;
       max-width: 343px;
       margin: 0 auto;
-      &__img {
+      & img {
         width: auto;
         max-height: 80px;
       }
       &__info {
         margin-left: 16px;
-        &__name {
+        &--name {
           margin: 0;
           font-size: 14px;
           padding-bottom: 8px;
         }
-        &__price {
+        &--price {
+          display: flex;
           font-size: 17px;
           font-weight: bold;
         }
-        &__fee {
+        &--free {
           font-size: 14px;
           font-weight: bold;
+          margin-left: 10px;
         }
       }
     }
