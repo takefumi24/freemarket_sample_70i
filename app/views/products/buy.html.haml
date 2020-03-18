@@ -24,7 +24,7 @@
               = "¥#{@product.price}"
           .payment-method
             .payment-method__head 支払い方法
-            =link_to "#", class: "payment-method__text" do
+            =link_to new_credit_card_path, class: "payment-method__text" do
               %span.payment-method__text--plus ＋
               %span.payment-method__text--char 登録してください
           .shipping-address
@@ -39,6 +39,6 @@
               = "#{@prefecture.name} #{@user.city} #{@user.street} #{@user.building}"
           .buy-button
             %button
-              = link_to "購入する",  done_product_purchase_path(@product.id)
+              = link_to "購入する", done_product_purchase_path(@product.id)
     
     =render "layouts/user_footer"
