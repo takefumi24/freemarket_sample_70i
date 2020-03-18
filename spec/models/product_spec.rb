@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "購入テスト",type: :feature do
   scenario "購入画面まで遷移できる" do
-    @user = FactoryBot.build(:user)
-    @product = FactoryBot.build(:product)
+    @user = FactoryBot.create(:user)
+    @product = FactoryBot.create(:product, user_id: @user.id)
+    # @card = FactoryBot.create(:credit_card, user_id: @user.id)
     # トップページへアクセス
     visit root_path
     # サインインページへ遷移
@@ -11,10 +12,13 @@ RSpec.feature "購入テスト",type: :feature do
     # メアドとパスワードを入力してログイン
     fill_in "user[email]", with: @user.email
     fill_in "user[password]", with: @user.password
-    click_button "ログイン"
-    visit product_path(@product[:id])
-    # visit buy_product_path(@product.id)
-    # click_on '購入する'
-    # expect(product[:delivery_status]).to "取引中"
+    click_on "ログイン"
+    visit product_path(@product)
+    visit buy_product_path(@product)
   end
+  # scenario "購入後、delivery_statusが取引中になる" do
+  #   visit done_product_purchase_path(product_id: @product.id)
+  #   expect(product[:delivery_status]).to "取引中"
+  # end
 end
+
