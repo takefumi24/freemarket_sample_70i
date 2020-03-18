@@ -52,10 +52,18 @@ class ProductsController < ApplicationController
   end
 
   def buy
-    @product = Product.find(params[:id])
-    @card = CreditCard.find(params[:id])
     @user = current_user
+    @product = Product.find(params[:id])
     @prefecture = Prefecture.find(@user.prefecture)
+
+    card = CreditCard.where(user_id: current_user.id).first
+    unless card.blank?
+      Payjp.api_key = Rails.application.credentials[:payjp][:private_key]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @credit_card = customer.cards.retrieve(card.card_id)
+      @exp_month = @credit_card.exp_month.to_s
+      @exp_year = @credit_card.exp_year.to_s.slice(2,3)
+    end
   end 
 
   def product_params
