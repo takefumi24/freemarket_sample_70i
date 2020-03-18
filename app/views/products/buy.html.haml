@@ -8,16 +8,20 @@
       %h2.buy-head 購入内容の確認
       .buy-product
         .buy-item
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class: "buy-item__img"
+          = image_tag @product.images[0].image.url
           .buy-item__info
-            %p.buy-item__info__name product3
-            %span.buy-item__info__price ¥30000
-            %span.buy-item__info__fee （税込） 送料込み
+            %p.buy-item__info--name
+              = @product.name
+            .buy-item__info--price
+              = @product.price
+              円
+              %span.buy-item__info--free (税込) 送料込み
       .buy-content
         %form.buy-form
           .buy-price
             .buy-price__head 支払い金額
-            .buy-price__int ¥30000
+            .buy-price__int 
+              = "¥#{@product.price}"
           .payment-method
             .payment-method__head 支払い方法
             =link_to "#", class: "payment-method__text" do
@@ -27,13 +31,12 @@
             .shipping-address__head
               %span 配送先
               %div
-                =link_to "変更する"
+                =link_to "変更する", edit_user_registration_path(current_user)
             %p.shipping-address__text
-              〒150-0043
+              〒
+              = @user.postal_code
               %br
-              東京都渋谷区道玄坂２丁目２３−１２ フォンティスビル ７F
-              %br
-              TECH CAMP
+              = "#{@prefecture.name} #{@user.city} #{@user.street} #{@user.building}"
           .buy-button
             %button 購入する
     
