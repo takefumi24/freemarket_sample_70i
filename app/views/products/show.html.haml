@@ -29,7 +29,7 @@
         =link_to "購入画面に進む", buy_product_path(@product.id), class: "able-btn"
       -elsif user_signed_in? && @product.delivery_status == "出品中" && current_user.id == @product.user_id
         =link_to "出品を編集する", edit_product_path(@product.id), class: "able-btn"
-        =link_to "出品を削除する", product_path(@product.id), method: :delete, class: "able-btn"
+        .able-btn#deletebtn{ data: { id: @product.id, url: product_path(@product.id) } } 出品を削除する
       -else
         =link_to "購入画面に進む", user_session_path, class: "able-btn"
       .content-text
