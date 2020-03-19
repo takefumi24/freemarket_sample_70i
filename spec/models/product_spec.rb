@@ -27,10 +27,6 @@ end
 describe Product do
   describe '#create' do
 
-    before do
-      @user = FactoryBot.build(:user)
-    end
-
     context "出品できない場合" do
 
       it "商品名が無い場合出品できない" do
