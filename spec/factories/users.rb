@@ -17,4 +17,13 @@ FactoryBot.define do
     birth_month           {"4"}
     birth_day             {"5"}
   end
+
+  # 出品機能用
+  factory :user do
+    id                    {"1"}
+    nickname              {"テスト"}
+    email                 {"test@test"}
+    password              {"aaaaaaa"}
+    password_confirmation {"aaaaaaa"}
+  end
 end

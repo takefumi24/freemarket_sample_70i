@@ -16,6 +16,9 @@ FactoryBot.define do
     category_id { 1 }
   end
 
+
+  
+  # 出品機能用
   factory :product_new, class: Product do
     id                {"1"}
     name              {"商品名"}
