@@ -16,12 +16,12 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-     if @product.save
-        redirect_to root_path
-      else
-        @product.images.build
-        render :new
-      end
+    if @product.save
+      redirect_to root_path
+    else
+      @product.images.build
+      render :new
+    end
   end
 
   def show
@@ -51,8 +51,10 @@ class ProductsController < ApplicationController
   def buy
   end
 
-    def product_params
-      params.require(:product).permit(:name, :category_id, :brand_id, :price, :detail, :condition_id, :which_postage, :sending_method_id, :size_id, :prefecture, :shipping_date, images_attributes: [:image]).merge(user_id: 1)
-    end
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :category_id, :brand_id, :price, :detail, :condition_id, :which_postage, :sending_method_id, :size_id, :prefecture, :shipping_date, images_attributes: [:image]).merge(user_id: current_user.id)
+  end
 
 end
