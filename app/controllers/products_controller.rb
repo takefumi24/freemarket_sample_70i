@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @prefecture = Prefecture.find(@user.prefecture)
 
-    card = CreditCard.where(user_id: current_user.id).first
+    card = CreditCard.find_by(user_id: @user.id)
     unless card.blank?
       Payjp.api_key = Rails.application.credentials[:payjp][:private_key]
       customer = Payjp::Customer.retrieve(card.customer_id)
