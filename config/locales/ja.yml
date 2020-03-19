@@ -6,5 +6,19 @@ ja:
           models:
             attributes:
               user:
-  name: 名前
-  email: メールアドレス
+  nickname:              ニックネーム
+  email:                 メールアドレス
+  password:              パスワード
+  password_confirmation: 確認用パスワード
+  family_name:           名字
+  name:                  名前
+  family_name_kana:      名字（カナ）
+  name_kana:             名前（カナ）
+  prefecture:            都道府県
+  city:                  市町村
+  street:                番地
+  postal_code:           郵便番号
+  phone:                 電話番号
+  birth_year:            生年月日（年）
+  birth_month:           生年月日（月）
+  birth_day:             生年月日（日）
