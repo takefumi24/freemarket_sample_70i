@@ -1,0 +1,24 @@
+.purchases-done
+  = image_tag "logo.png" 
+  .purchases-done__item
+    %h1.purchases-done__item--title
+      = icon("far","clock", "発送をお待ちください")
+      %h2.purchases-done__item--title
+        購入が完了しました
+    .purchases-done__item--inner
+      .inner-main
+        .item-mainbox
+          = image_tag "#{@product.images[0].image.url}", size: '200x200', class: 'buydetails-contet__image'
+          .item-mainbox--detail
+            .detail.buy-name
+              = @product.name
+            .detail.buy-price
+              = "¥#{@product.price.to_s}"
+            .detail.shipping-free 
+              (税込) 送料込み
+
+      .inner-total
+        %p 支払金額
+        = "¥#{@product.price.to_s}"
+
+      = link_to "トップページへ戻る", root_path, class: 'item-submit'

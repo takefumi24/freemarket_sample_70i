@@ -52,24 +52,32 @@ class ProductsController < ApplicationController
   end
 
   def buy
-    @product = Product.find(params[:id])
     @user = current_user
+    @product = Product.find(params[:id])
     @prefecture = Prefecture.find(@user.prefecture)
-    
+
+    card = CreditCard.find_by(user_id: @user.id)
+    unless card.blank?
+      Payjp.api_key = Rails.application.credentials[:payjp][:private_key]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @credit_card = customer.cards.retrieve(card.card_id)
+      @exp_month = @credit_card.exp_month.to_s
+      @exp_year = @credit_card.exp_year.to_s.slice(2,3)
+    end
   end 
 
-    def product_params
-      params.require(:product).permit(:name, :category_id, :brand_id, :price, :detail, :condition_id, :which_postage, :sending_method_id, :size_id, :prefecture, :shipping_date, images_attributes: [:image]).merge(user_id: 1)
-    end 
+  def product_params
+    params.require(:product).permit(:name, :category_id, :brand_id, :price, :detail, :condition_id, :which_postage, :sending_method_id, :size_id, :prefecture, :shipping_date, images_attributes: [:image]).merge(user_id: 1)
+  end 
 
     # 出品中商品のうち、出品が多いブランドを取得し、そのブランドに属する最新の出品商品を取得
-    def brand_ranks(product)
-      targets =[]
-      brand_ranks = Brand.find(product.group(:brand_id).order('count(brand_id) desc').limit(3).pluck(:brand_id))
-      brand_ranks.each do |brand|
-        target = product.where(brand_id: brand.id).order(:created_at).last
-        targets << target
-      end
-      return targets
+  def brand_ranks(product)
+    targets =[]
+    brand_ranks = Brand.find(product.group(:brand_id).order('count(brand_id) desc').limit(3).pluck(:brand_id))
+    brand_ranks.each do |brand|
+      target = product.where(brand_id: brand.id).order(:created_at).last
+      targets << target
     end
+    return targets
+  end
 end

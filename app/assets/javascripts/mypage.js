@@ -23,6 +23,7 @@ $(document).on('turbolinks:load', function() {
     } else if ($(target).length) {
       $('.sideber-contents li').removeClass('sideActive');
       $(target).addClass('sideActive');
+      $("html,body").animate({scrollTop:0},"300");
     }
 
     $('.my-list li').removeClass('active');
