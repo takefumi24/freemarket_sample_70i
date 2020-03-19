@@ -27,4 +27,4 @@
 
       .content-bottom#card_token
         = f.submit '登録する', class: 'card-btn', id: 'token_submit'
-        = link_to "戻る", user_path(1), class: "card-btn", data: {"turbolinks" => false} 
+        = link_to "戻る", :back, class: "card-btn", data: {"turbolinks" => false} 

@@ -101,17 +101,17 @@
   //カテゴリ一覧
   .pickupContainer
     .pickupContainer__title
-      カテゴリ一覧
+      おすすめアイテム
     .pickupContainer__box
       .pickupContainer__box--subtitle
         = link_to "#" do
-          新着アイテム
+          新着アイテム一覧
       .pickupContainer__box--categories
         - @products.each do |product|
           .category
             = link_to product_path(product.id), class: "category__link" do
               .category__link--img
-                = image_tag product.images[0].image_url
+                = image_tag product.images[0].image.url
               .category__link--text
                 = product.name
                 %ul
@@ -139,7 +139,7 @@
                 = icon("fas", "crown")
                 = product.brand.name
               .category__link--img
-                = image_tag product.images[0].image_url
+                = image_tag product.images[0].image.url
               .category__link--text
                 = product.name
                 %ul
