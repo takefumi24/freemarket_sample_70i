@@ -14,12 +14,10 @@ $(document).on('turbolinks:load', function() {
       })
 
      .done(function() {
-        alert('削除が完了しました。');
-        location.href= "/";
       })
 
      .fail(function() {
-        alert('削除に失敗しました。');
+        alert('通信エラー');
       });
 
     } else {
