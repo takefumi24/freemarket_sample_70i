@@ -46,9 +46,14 @@ class ProductsController < ApplicationController
 
   def destroy
     # 削除機能実装用
-    # product = Product.find(params[:id])
-    # product.destroy
-    # redirect_to root_path
+    product = Product.find(params[:id])
+
+    if product.destroy
+      redirect_to root_path
+    else
+      redirect_to product_path(product.id)
+    end
+
   end
 
   def buy
