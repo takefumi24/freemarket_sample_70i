@@ -25,4 +25,9 @@ class Product < ApplicationRecord
   def next
     Product.order("id ASC").where("id > ?", id).first
   end
+
+  # ユーザーがいいね済みか判定
+  def like_by?(user)
+    product_users.where(user_id: user.id).exists?
+  end
 end
