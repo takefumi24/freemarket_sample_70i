@@ -13,6 +13,8 @@ class Product < ApplicationRecord
   belongs_to :sending_method
   belongs_to :user
   belongs_to :category
+  has_many :product_users, dependent: :destroy
+  has_many :product, through: :product_users, source: :user_id
 
   enum delivery_status: [ "出品中", "取引中", "購入済" ]
 
