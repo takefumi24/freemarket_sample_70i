@@ -116,12 +116,10 @@
                 = product.name
                 %ul
                   %li
-                    = product.price
-                    円
+                    = "¥#{product.price}"
                   %li
-                    = icon("fa", "star", 0)
-                %p.tax 
-                  (税込)
+                    = icon("fa", "star", product.product_users.count)
+                %p.tax (税込)
                 
   //ピックアップブランド
   .pickupContainer
@@ -144,12 +142,10 @@
                 = product.name
                 %ul
                   %li
-                    = product.price
-                    円
+                    = "¥#{product.price}"
                   %li
-                    = icon("fa", "star", 0)
-                %p.tax 
-                  (税込)
+                    = icon("fa", "star", product.product_users.count)
+                %p.tax (税込)
 
 .appBannar
   .appBannar__inner
