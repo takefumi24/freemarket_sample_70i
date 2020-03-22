@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
   before_action :set_categories
   
   def index
+    flash[:notice]=nil
+    flash[:error]=nil
     product = Product.出品中
     @products = product.includes(:images).limit(3).order(id: "DESC") 
     @brand_products = brand_ranks(product)
