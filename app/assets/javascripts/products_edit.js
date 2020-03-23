@@ -1,4 +1,4 @@
-$(function() {
+$(document).on("turbolinks:load", function() {
   if (/\/products\/\d+\/edit/.test(location.pathname)) {
     // 商品情報を入れる
     product_id = location.pathname.replace(/[^0-9]/g, "");
