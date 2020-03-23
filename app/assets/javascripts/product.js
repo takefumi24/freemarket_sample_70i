@@ -15,9 +15,6 @@ $(document).on('turbolinks:load', function () {
     var input_area = $('.input_area');
     var preview = $('#preview');
     var preview2 = $('#preview2');
-
-
-
     // ページ遷移後にカテゴリ一覧を取得
     $.getJSON(
       '/category',

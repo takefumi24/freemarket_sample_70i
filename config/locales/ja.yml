@@ -1,7 +1,38 @@
 ja:
- activerecord:
- models:
- attributes:
- user:
- name: 名前
- email: メールアドレス
+  activerecord:
+    errors:
+      messages:
+        record_invalid:
+          models:
+            attributes:
+              user:
+                nickname:              ニックネーム
+                email:                 メールアドレス
+                password:              パスワード
+                password_confirmation: 確認用パスワード
+                family_name:           名字
+                name:                  名前
+                family_name_kana:      名字（カナ）
+                name_kana:             名前（カナ）
+                prefecture:            都道府県
+                city:                  市町村
+                street:                番地
+                postal_code:           郵便番号
+                phone:                 電話番号
+                birth_year:            生年月日（年）
+                birth_month:           生年月日（月）
+                birth_day:             生年月日（日）
+  activerecord:
+    attributes:
+      product:
+        name: 商品名
+        detail: 商品の説明
+        category: カテゴリー
+        size: サイズ
+        condition: 商品の状態
+        which_postage: 配送料の負担
+        sending_method: 配送の方法
+        prefecture: 配送元の地域
+        shipping_date: 配送までの日数
+        price: 価格
+        images: 商品画像

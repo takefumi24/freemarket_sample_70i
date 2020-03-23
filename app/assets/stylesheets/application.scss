@@ -2,14 +2,17 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "products";
+@import "common";
 @import "modules/user_footer";
 @import "modules/user_signup";
 @import "modules/user_login";
 @import "topPage";
 @import "kaisou";
 @import "show_products";
-@import"categories";
+@import "categories";
 @import "modules/mypage";
 @import "buy_products";
 @import "modules/credit_cards";
 @import "products_edit";
+@import "modules/purchases_done";
+@import "error_messages";

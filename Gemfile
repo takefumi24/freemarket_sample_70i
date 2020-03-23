@@ -64,6 +64,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'webdrivers'
+  gem 'faker', "~> 2.8"
 end
 
 group :production do
@@ -85,10 +86,6 @@ gem 'active_hash'
 gem 'devise'
 gem 'devise-i18n'
 gem 'font-awesome-sass'
-gem 'active_hash'
-# カテゴリテーブルの階層を実現するgem
 gem 'ancestry'
 gem 'rails-i18n'
-
 gem 'payjp'
-

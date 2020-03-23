@@ -5,8 +5,13 @@ Rails.application.routes.draw do
 
   root "products#index"
   resources :products, only: [:new, :create, :show, :edit, :update, :destroy] do
-    collection do
+    member do
       get 'buy'
+    end
+    resources :purchases, only: [] do
+      member do
+        get 'done', to: 'purchases#done'
+      end
     end
   end
 
@@ -20,6 +25,4 @@ Rails.application.routes.draw do
   end
 
   resources :category, controller: :categories, only: [:index, :show]
-
-  # get '*anything', to: 'errors#error_page' if Rails.env.production?
 end

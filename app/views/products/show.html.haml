@@ -23,13 +23,13 @@
             %span 送料込み
           -else
             %span 送料別
-      -if @product.buyer_id == 1
-        =link_to "売り切れました", "#", class: "disable-btn"
-      -elsif user_signed_in? && @product.buyer_id != 1 && current_user.id != @product.user_id
-        =link_to "購入画面に進む", buy_products_path, class: "able-btn"
-      -elsif user_signed_in? && @product.buyer_id != 1 && current_user.id == @product.user_id
+      -if @product.delivery_status == "取引中" || @product.delivery_status == "購入済"
+        =link_to "売り切れました", root_path, class: "disable-btn"
+      -elsif user_signed_in? && @product.delivery_status == "出品中" && current_user.id != @product.user_id
+        =link_to "購入画面に進む", buy_product_path(@product.id), class: "able-btn"
+      -elsif user_signed_in? && @product.delivery_status == "出品中" && current_user.id == @product.user_id
         =link_to "出品を編集する", edit_product_path(@product.id), class: "able-btn"
-        =link_to "出品を削除する", product_path(@product.id), method: :delete, class: "able-btn"
+        .able-btn#deletebtn{ data: { id: @product.id, url: product_path(@product.id) } } 出品を削除する
       -else
         =link_to "購入画面に進む", user_session_path, class: "able-btn"
       .content-text
@@ -42,11 +42,11 @@
         %tr
           %td.content-info__name カテゴリー
           %td.content-info__text
-            =link_to "ベビー・キッズ", "#"
+            =link_to @product.category.root.name, category_path(@product.category.root_id)
             %br
-            =link_to "ベビー服(男女兼用)~95cm", "#"
+            =link_to @product.category.parent.name, category_path(@product.category.parent_id)
             %br
-            =link_to "アウター", "#"
+            =link_to @product.category.name, category_path(@product.category.id)
         %tr
           %td.content-info__name ブランド
           %td.content-info__text
@@ -95,7 +95,7 @@
         %li.next-product
           =link_to "後ろの商品 &gt;".html_safe, product_path(@product.next)
     .more-link
-      =link_to "ベビー・キッズをもっと見る", "#"
+      =link_to "#{@product.category.root.name}をもっと見る", category_path(@product.category.root_id)
 
 -# フッター
 =render "shared/main_footer"

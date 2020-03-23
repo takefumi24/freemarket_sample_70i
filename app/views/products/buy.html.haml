@@ -8,33 +8,53 @@
       %h2.buy-head 購入内容の確認
       .buy-product
         .buy-item
-          =image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", class: "buy-item__img"
+          = image_tag @product.images[0].image.url
           .buy-item__info
-            %p.buy-item__info__name product3
-            %span.buy-item__info__price ¥30000
-            %span.buy-item__info__fee （税込） 送料込み
+            %p.buy-item__info--name
+              = @product.name
+            .buy-item__info--price
+              = "¥#{@product.price}"
+              %span.buy-item__info--free (税込) 送料込み
       .buy-content
         %form.buy-form
           .buy-price
             .buy-price__head 支払い金額
-            .buy-price__int ¥30000
+            .buy-price__int 
+              = "¥#{@product.price}"
           .payment-method
-            .payment-method__head 支払い方法
-            =link_to "#", class: "payment-method__text" do
-              %span.payment-method__text--plus ＋
-              %span.payment-method__text--char 登録してください
+            - if @credit_card.present?
+              .payment-method__head 
+                %p 支払い方法
+                = link_to "編集する","#", class: "payment-method__text"
+              .payment-method__info
+                = icon("far", "address-card")
+                .payment-method__info--item
+                  .number
+                    = "**** **** **** " + @credit_card.last4
+                  .period
+                    = "有効期限：#{@exp_month} / #{@exp_year}"
+            - else
+              .payment-method__head 
+                %p 支払い方法
+                =link_to new_credit_card_path, class: "payment-method__text" do
+                  = icon("fas", "plus","登録してください")
           .shipping-address
             .shipping-address__head
               %span 配送先
               %div
-                =link_to "変更する"
+                =link_to "変更する", edit_user_registration_path(current_user)
             %p.shipping-address__text
-              〒150-0043
+              = "〒 #{@user.postal_code.to_s.insert(3, "-")}"
               %br
-              東京都渋谷区道玄坂２丁目２３−１２ フォンティスビル ７F
-              %br
-              TECH CAMP
-          .buy-button
-            %button 購入する
-    
+              = "#{@prefecture.name} #{@user.city} #{@user.street} #{@user.building}"
+          - if @credit_card.present?
+            = link_to "購入する", done_product_purchase_path(@product.id), class:"buy-button check"
+          - else
+            #card-error
+            .buy-button#failure
+              購入する
+              
+          = link_to "戻る", product_path(@product.id), class:"buy-button back"
+
     =render "layouts/user_footer"
+     

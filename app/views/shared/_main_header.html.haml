@@ -2,8 +2,8 @@
   .topHeader-inner
     .topHeader-inner__main
       .topHeader-inner__main--icon
-        = link_to "#" do
-          =image_tag "http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg"
+        = link_to root_path do
+          =image_tag "logo.png"
       .topHeader-inner__main--searchBox
         = form_for "" do |f|
           .search-form
@@ -11,19 +11,29 @@
             = button_tag type: "submit", class: 'search-form--btn' do
               = icon("fa","search", class:"search-icon")
     .topHeader-contents
-      - categories = ["レディース","メンズ","インテリア・住まい・小物","本・音楽・ゲーム","おもちゃ・ホビー・グッズ","コスメ・香水・美容","家電・スマホ・カメラ","スポーツ・レジャー","ハンドメイド","チケット","自動車・オートバイ","その他"]
-      - @parent = 0
-      %ul.gnav
-        %li.gnav-category
-          = link_to "#" do
+      %ul.contents-tab
+        %li.contents-tab__category
+          = link_to category_index_path do
             カテゴリー
-          %ul.list
-            - categories.each do |a|
-              %li
-                = link_to "#" do 
-                  = a
-                = render "top/childLink"
-              - @parent += 1
+          .contents-tab__category--lists
+            -# 親カテゴリ
+            %ul.parent
+              - @parents.each do |parent|
+                %li
+                  = link_to category_path(parent.id) do
+                    = parent.name
+                  -#  子カテゴリ 
+                  %ul.child
+                    - parent.children.each do |child|
+                      %li
+                        = link_to category_path(child.id) do
+                          = child.name
+                        -# 孫カテゴリ
+                        %ul.grandChild
+                          - child.children.each do |grandChild|
+                            %li
+                              = link_to category_path(grandChild.id) do
+                                = grandChild.name
         %li.left-list__brand
           = link_to "#" do
             ブランド

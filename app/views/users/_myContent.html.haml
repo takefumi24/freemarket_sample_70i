@@ -2,7 +2,8 @@
   = link_to "#" do
     =image_tag "member_photo_noimage_thumb.png", width: "60", hegiht: "60"
     .my-content__info--name
-      %p たかはし
+      %p 
+        = @user.nickname
     .my-content__info--rating
       %p 評価 0
       %p 出品数 0
