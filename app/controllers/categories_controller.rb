@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+  include CommonActions
+  before_action :set_categories
+
   def index
     @main_categories = Category.where(id: 1..13)
     respond_to do |format|
@@ -31,5 +34,29 @@ class CategoriesController < ApplicationController
     if @parent
       @parent = @parent.parent.present? ? @parent.parent : @parent
     end
+
+    # カテゴリー別商品一覧
+    id = @category.id
+
+    if id >= 153  # 孫カテゴリーの場合
+      @products = @category.products.出品中
+    elsif 14 <= id && id <= 152  # 親カテゴリーの場合
+      @products = []
+      @category.children.each do |category|
+        product = category.products.出品中
+        if product != []
+          @products.concat(product)
+        end
+      end
+    else  # ルートカテゴリーの場合
+      @products = []
+      @category.indirects.each do |category|
+        product = category.products.出品中
+        if product != []
+          @products.concat(product)
+        end
+      end
+    end
+
   end
 end

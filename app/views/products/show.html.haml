@@ -9,10 +9,10 @@
       %ul
         -@product.images.each do |image|
           %li.show-slide
-            =image_tag image.image_url, class: "main-image"
+            =image_tag image.image.url, class: "main-image"
       .content-images
         -@product.images.each do |image|
-          =image_tag image.image_url, class: "content-images__list"
+          =image_tag image.image.url, class: "content-images__list"
       .price-content
         .price-content__price
           %span 
@@ -42,15 +42,15 @@
         %tr
           %td.content-info__name カテゴリー
           %td.content-info__text
-            =link_to "ベビー・キッズ", "#"
+            =link_to @product.category.root.name, category_path(@product.category.root_id)
             %br
-            =link_to "ベビー服(男女兼用)~95cm", "#"
+            =link_to @product.category.parent.name, category_path(@product.category.parent_id)
             %br
-            =link_to "アウター", "#"
+            =link_to @product.category.name, category_path(@product.category.id)
         %tr
           %td.content-info__name ブランド
           %td.content-info__text
-            =@product.brand.name
+            =@product.brand.name if @product.brand
         %tr
           %td.content-info__name 商品のサイズ
           %td.content-info__text
@@ -95,7 +95,7 @@
         %li.next-product
           =link_to "後ろの商品 &gt;".html_safe, product_path(@product.next)
     .more-link
-      =link_to "ベビー・キッズをもっと見る", "#"
+      =link_to "#{@product.category.root.name}をもっと見る", category_path(@product.category.root_id)
 
 -# フッター
 =render "shared/main_footer"
