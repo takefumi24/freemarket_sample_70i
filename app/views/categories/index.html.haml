@@ -1,3 +1,7 @@
+-# ヘッダー
+=render "shared/main_header"
+
+-# メイン
 .category-index
   .container
     %h2 カテゴリー一覧
@@ -19,3 +23,8 @@
                   - child.children.each do |gchild|
                     .link-box
                       = link_to gchild.name, category_path(gchild.id), class: 'category-link'
+
+-# フッター
+=render "shared/main_footer"
+-# カメラアイコン
+=render "shared/exhibition_btn"

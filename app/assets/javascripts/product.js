@@ -1,4 +1,4 @@
-$(function () {
+$(document).on('turbolinks:load', function() {
   // カテゴリ一覧を保持する変数
   var categories = []
   // 大中小カテゴリごとの順番を保持

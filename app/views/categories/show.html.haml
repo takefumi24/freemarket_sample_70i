@@ -1,3 +1,7 @@
+-# ヘッダー
+=render "shared/main_header"
+
+-# メイン
 .category-page
   .container
     .child-links
@@ -7,14 +11,19 @@
       .item-container__header
         = "#{@category.name}の商品一覧"
       .items
-        - (1..20).each do |i|
-          =link_to "#", class: 'item' do
-            = image_tag 'logo.png',size: '188x188', class: 'item__image'
+        - @products.each do |product|
+          =link_to product_path(product.id), class: 'item' do
+            = image_tag product.images[0].image.url, size: '188x188', class: 'item__image'
             .item__body
               %h3.item__body__name
-                柔道着
+                =product.name
               .item__body__price
-                ¥ 30,000
+                = "¥ #{product.price}"
 
     .category-label
       = @parent.present? ? "#{@category.name}(#{@parent.name})" : @category.name
+
+-# フッター
+=render "shared/main_footer"
+-# カメラアイコン
+=render "shared/exhibition_btn"
