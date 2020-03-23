@@ -39,9 +39,9 @@
           .form-group
             %label カテゴリー
             %span.form-require  必須
-            %select#category-first{name: "product[category_id]"}
-            %select#category-second{name: "product[category_id]"}
-            %select#category-third{name: "product[category_id]"}
+            %select#category-first{name: "product[category_ids][]"}
+            %select#category-second{name: "product[category_ids][]"}
+            %select#category-third{name: "product[category_ids][]"}
           .form-group
             %label サイズ
             %span.form-require  必須

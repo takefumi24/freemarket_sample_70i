@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_110330) do
+ActiveRecord::Schema.define(version: 2020_03_19_120930) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,12 +26,21 @@ ActiveRecord::Schema.define(version: 2020_03_13_110330) do
   end
 
   create_table "category_brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "brand_id", null: false
+    t.bigint "brand_id"
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_category_brands_on_brand_id"
     t.index ["category_id"], name: "index_category_brands_on_category_id"
+  end
+
+  create_table "category_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_products_on_category_id"
+    t.index ["product_id"], name: "index_category_products_on_product_id"
   end
 
   create_table "conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -72,10 +81,8 @@ ActiveRecord::Schema.define(version: 2020_03_13_110330) do
     t.bigint "condition_id", null: false
     t.bigint "sending_method_id", null: false
     t.bigint "buyer_id"
-    t.bigint "category_id", null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["buyer_id"], name: "index_products_on_buyer_id"
-    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["condition_id"], name: "index_products_on_condition_id"
     t.index ["sending_method_id"], name: "index_products_on_sending_method_id"
     t.index ["size_id"], name: "index_products_on_size_id"
@@ -124,9 +131,10 @@ ActiveRecord::Schema.define(version: 2020_03_13_110330) do
 
   add_foreign_key "category_brands", "brands"
   add_foreign_key "category_brands", "categories"
+  add_foreign_key "category_products", "categories"
+  add_foreign_key "category_products", "products"
   add_foreign_key "images", "products"
   add_foreign_key "products", "brands"
-  add_foreign_key "products", "categories"
   add_foreign_key "products", "conditions"
   add_foreign_key "products", "sending_methods"
   add_foreign_key "products", "sizes"

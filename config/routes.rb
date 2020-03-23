@@ -21,4 +21,5 @@ Rails.application.routes.draw do
 
   resources :category, controller: :categories, only: [:index, :show]
 
+  # get '*anything', to: 'errors#error_page' if Rails.env.production?
 end

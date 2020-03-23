@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
+  # rescue_from ActiveRecord::RecordNotFound, with: :render_error if Rails.env.production?
+  # rescue_from ActionController::RoutingError, with: :render_error if Rails.env.production?
 
   # ログアウト後に遷移するpathを設定
   def after_sign_out_path_for(resource)
