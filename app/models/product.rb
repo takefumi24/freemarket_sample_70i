@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  validates :shipping_date, :price, :which_postage, :delivery_status, :prefecture, :category_id, :user_id, :size_id, :condition_id, :sending_method_id, presence: true
-  validates :images , presence: true, length: {minimum: 1, maximum: 10}
+  validates :shipping_date, :price, :which_postage, :delivery_status, :prefecture, :category_id, :user_id, presence: true
+  validates :images , presence: true, length: {maximum: 10}
   validates :name, presence: true, length: {maximum: 40}
   validates :detail, presence: true, length: {maximum: 1000}
   has_many :images, dependent: :destroy

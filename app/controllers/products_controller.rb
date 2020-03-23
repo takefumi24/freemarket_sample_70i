@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   include CommonActions
   before_action :set_categories
+  before_action :move_to_sign_in, except: [:index, :show]
   
   def index
     flash[:notice]=nil
@@ -61,8 +62,10 @@ class ProductsController < ApplicationController
   def buy
     @user = current_user
     @product = Product.find(params[:id])
-    @prefecture = Prefecture.find(@user.prefecture)
+    redirect_to root_path if @user.id == @product.user_id
 
+    @prefecture = Prefecture.find(@user.prefecture)
+    
     card = CreditCard.find_by(user_id: @user.id)
     unless card.blank?
       Payjp.api_key = Rails.application.credentials[:payjp][:private_key]
@@ -74,9 +77,15 @@ class ProductsController < ApplicationController
   end 
 
 
+  private
+
   def product_params
     params.require(:product).permit(:name, :category_id, :brand_id, :price, :detail, :condition_id, :which_postage, :sending_method_id, :size_id, :prefecture, :shipping_date, images_attributes: [:image]).merge(user_id: current_user.id)
   end 
+
+  def move_to_sign_in
+    redirect_to new_user_session_path unless user_signed_in?
+  end
 
   # 出品中商品のうち、出品が多いブランドを取得し、そのブランドに属する最新の出品商品を取得
   def brand_ranks(product)
