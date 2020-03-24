@@ -100,6 +100,9 @@ $(document).on("turbolinks:load", function() {
       var size_form = $("#product_size_id");
       var condition_form = $("#product_condition_id");
       var which_postage_form = $("#product_which_postage_id");
+      var sending_method_form = $("#product_sending_method_id");
+      var prefecture_form = $("#product_prefecture_id");
+      var shipping_date = $("#product_shipping_date_id");
       var price_form = $("#price_form");
       var price = price_form.val();
       // 画像が0枚
@@ -133,9 +136,29 @@ $(document).on("turbolinks:load", function() {
         has_error = true;
       }
 
-      // 配送料が空
-      if (which_postage_form.val().replace(/\s+/g, "").length == 0) {
-        error_message += "配送料負担を選択してください\n";
+      // 配送料の負担が空
+      if ($("#product_which_postage").val() == "") {
+        error_message += "配送料の負担を選択してください\n";
+        has_error = true;
+      }
+
+      // 配送の方法が空
+      if (sending_method_form.val().replace(/\s+/g, "").length == 0) {
+        error_message += "配送の方法を選択してください\n";
+        has_error = true;
+      }
+      // 配送元の地域が空
+
+
+      if ($('#product_prefecture').val() == "") {
+        error_message += "配送元の地域を選択してください\n";
+        has_error = true;
+      } else {
+
+      }
+      // 配送までの日数が空
+      if ($('#product_shipping_date').val() == "") {
+        error_message += "配送までの日数を選択してください\n";
         has_error = true;
       }
 

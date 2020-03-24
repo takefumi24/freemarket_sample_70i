@@ -1,9 +1,7 @@
 -# ヘッダー
 .show-container
   .show-content
-    .content-head-img
-      =link_to root_path do
-        = image_tag "logo.png"
+    =render "shared/sub_header"
   -# メイン
   .new-sale-page
     .container
@@ -53,7 +51,7 @@
             .form-group
               %label サイズ
               %span.form-require  必須
-              = f.collection_select :size_id, Size.all, :id, :name, prompt: "選択して下さい"
+              = f.collection_select :size_id, Size.all, :id, :name, prompt: "選択して下さい", class: 'size_form'
             .form-group
               %label ブランド
               %span.form-require__sub 任意
@@ -82,7 +80,7 @@
             .form-group
               %label 配送までの日数
               %span.form-require  必須
-              = f.select :shipping_date, [["1~2日で発送", 0], ["2~3日で発送", 1], ["4~7日で発送", 2]], prompt: "選択して下さい", class: "select"
+              = f.select :shipping_date, [["1~2日で発送", 0], ["2~3日で発送", 1], ["4~7日で発送", 2]], prompt: "選択して下さい", class: "select",required: true
 
         .sale-content
           %h3 価格（¥300〜9,999,999）
