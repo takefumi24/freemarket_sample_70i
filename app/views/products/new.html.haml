@@ -47,9 +47,9 @@
             .form-group
               %label カテゴリー
               %span.form-require  必須
-              %select#category-first{name: "product[category_id]"}
-              %select#category-second{name: "product[category_id]"}
-              %select#category-third{name: "product[category_id]"}
+              %select#category-first{name: "product[category_ids][]"}
+              %select#category-second{name: "product[category_ids][]"}
+              %select#category-third{name: "product[category_ids][]"}
             .form-group
               %label サイズ
               %span.form-require  必須
@@ -96,7 +96,7 @@
                   ¥
                   = f.text_field :price, placeholder: '例）300 '
         .sell-btn-box
-          = f.submit "出品する", class: "sell-btn"
+          = f.submit "出品する", class: "sell-btn", id: "submit-sale"
           = link_to "もどる", "#", class: "back-btn"
 
     -# フッター
