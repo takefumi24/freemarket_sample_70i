@@ -3,10 +3,10 @@ class ProductsController < ApplicationController
   include CommonActions
   before_action :set_categories
   before_action :move_to_sign_in, except: [:index, :show]
-  
+
   def index
     product = Product.出品中
-    @products = product.includes(:images).limit(3).order(id: "DESC") 
+    @products = product.includes(:images).limit(3).order(id: "DESC")
     @brand_products = brand_ranks(product)
   end
 
@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
       redirect_to action: :edit
     end
   end
-  
+
   def destroy
    # 削除機能実装用
    product = Product.find(params[:id])
@@ -68,14 +68,14 @@ class ProductsController < ApplicationController
       redirect_to product_path(product.id)
     end
   end
-  
+
   def buy
     @user = current_user
     @product = Product.find(params[:id])
     redirect_to root_path if @user.id == @product.user_id
 
     @prefecture = Prefecture.find(@user.prefecture)
-    
+
     card = CreditCard.find_by(user_id: @user.id)
     unless card.blank?
       Payjp.api_key = Rails.application.credentials[:payjp][:private_key]
@@ -84,8 +84,8 @@ class ProductsController < ApplicationController
       @exp_month = @credit_card.exp_month.to_s
       @exp_year = @credit_card.exp_year.to_s.slice(2,3)
     end
-  end 
-  
+  end
+
   private
 
   def move_to_sign_in

@@ -1,9 +1,10 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  validates :shipping_date, :price, :which_postage, :delivery_status, :prefecture, :category_id, :user_id, presence: true
+  validates :shipping_date, :price, :which_postage, :delivery_status, :prefecture, :user_id, presence: true
   validates :images , presence: true, length: {maximum: 10}
   validates :name, presence: true, length: {maximum: 40}
   validates :detail, presence: true, length: {maximum: 1000}
+  validate :check_categories
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :comments
@@ -14,7 +15,6 @@ class Product < ApplicationRecord
   belongs_to :condition
   belongs_to :sending_method
   belongs_to :user
-  # belongs_to :category
 
   enum delivery_status: [ "出品中", "取引中", "購入済" ]
 
@@ -24,5 +24,15 @@ class Product < ApplicationRecord
 
   def next
     Product.order("id ASC").where("id > ?", id).first
+  end
+
+  def check_categories
+    has_error = false
+    category_products.each do |cat|
+      has_error = true if cat.id == 0
+    end
+    if has_error
+      errors.add(:categories, "の内容が不正です")
+    end
   end
 end
