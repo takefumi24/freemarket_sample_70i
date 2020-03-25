@@ -1,6 +1,7 @@
 class ProductUsersController < ApplicationController
+  before_action :set_products
+
   def create
-    @product = Product.find(params[:product_id])
     like = current_user.product_users.build(product_id: params[:product_id])
     if like.save
       respond_to do |format|
@@ -13,7 +14,6 @@ class ProductUsersController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:product_id])
     like = ProductUser.find_by(product_id: params[:product_id], user_id: current_user.id)
     if like.destroy
       respond_to do |format|
@@ -24,4 +24,10 @@ class ProductUsersController < ApplicationController
       redirect_to product_path(params[:product_id]), alert: 'お気に入りの削除に失敗しました'
     end
   end
+
+  private
+  def set_products
+    @product = Product.find(params[:product_id])
+  end
+  
 end
