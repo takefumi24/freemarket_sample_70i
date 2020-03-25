@@ -1,0 +1,49 @@
+// いいね！一覧
+.favorite {
+  padding: 5px;
+  background-color: white;
+  border-top: 2px solid red;
+  & .title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+  }
+  & .facorite-list{
+    min-height: 110px;
+    & li {
+      border-top: 1px solid lightgray;
+    }
+    &__item-none {
+      text-align: center;
+      line-height: 100px;
+      color: rgb(161, 149, 149);
+    }
+    &__item {
+      & a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        color: black;
+        & img {
+          height: 60px;
+          width: 60px;
+          border: 1px solid lightgray;
+        }
+        & .item-text {
+          width: 80%;
+          & p {
+            margin: 10px 0;
+          }
+        }
+        & i {
+          font-size: 1.5em;
+        }
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

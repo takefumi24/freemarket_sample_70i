@@ -1,0 +1,16 @@
+.notification {
+  font-size: 18px;
+  .notice {
+    line-height: 40px;
+    background-color: lightblue;
+    color: white;
+    text-align: center;
+  }
+
+  .alert {
+    line-height: 40px;
+    background-color: orange;
+    color: white;
+    text-align: center;
+  }
+}

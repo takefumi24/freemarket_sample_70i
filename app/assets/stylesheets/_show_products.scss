@@ -112,19 +112,41 @@
         display: flex;
         justify-content: space-between;
         &__btn {
+          cursor: pointer;
           color: #3CCACE;
-          border: 1px solid #ffb340;
-          padding: 10px 16px;
-          border-radius: 40px;
+          & a {
+            display: inline-block;
+            border: 1px solid #ffb340;
+            padding: 10px 16px;
+            border-radius: 40px;
+            color: #3CCACE;
+            &:active {
+              box-shadow: (0 0 10px orange);
+            }
+            &:active > i {
+              position: relative;
+              bottom: 3px;
+            }
+          }
         }
         &__btn:hover {
           opacity: .7;
+        }
+        #likeIconActive {
+          color: #ffb340;
+        }
+        & .myProduct-likebtn {
+          display: inline-block;
+          border: 1px solid #ffb340;
+          padding: 10px 16px;
+          border-radius: 40px;
+          color: #3CCACE;
         }
         &__report-btn {
           font-size: 14px;
           border: 1px solid #333;
           border-radius: 4px;
-          a {
+          & a {
             padding: 10px 16px;
             display: inline-block;
             color: #333;
