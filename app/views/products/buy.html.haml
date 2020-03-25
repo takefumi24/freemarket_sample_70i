@@ -1,9 +1,7 @@
 .show-container
   .show-content
-    .content-head-img
-      =link_to root_path do
-        = image_tag "logo.png"
-    
+    =render "shared/sub_header"
+
     .buy-confirmation
       %h2.buy-head 購入内容の確認
       .buy-product
@@ -19,11 +17,11 @@
         %form.buy-form
           .buy-price
             .buy-price__head 支払い金額
-            .buy-price__int 
+            .buy-price__int
               = "¥#{@product.price}"
           .payment-method
             - if @credit_card.present?
-              .payment-method__head 
+              .payment-method__head
                 %p 支払い方法
                 = link_to "編集する","#", class: "payment-method__text"
               .payment-method__info
@@ -34,7 +32,7 @@
                   .period
                     = "有効期限：#{@exp_month} / #{@exp_year}"
             - else
-              .payment-method__head 
+              .payment-method__head
                 %p 支払い方法
                 =link_to new_credit_card_path, class: "payment-method__text" do
                   = icon("fas", "plus","登録してください")
@@ -47,14 +45,14 @@
               = "〒 #{@user.postal_code.to_s.insert(3, "-")}"
               %br
               = "#{@prefecture.name} #{@user.city} #{@user.street} #{@user.building}"
+              = "#{@user.destination_family_name} #{@user.destination_name}"
           - if @credit_card.present?
             = link_to "購入する", done_product_purchase_path(@product.id), class:"buy-button check"
           - else
             #card-error
             .buy-button#failure
               購入する
-              
+
           = link_to "戻る", product_path(@product.id), class:"buy-button back"
 
     =render "layouts/user_footer"
-     
