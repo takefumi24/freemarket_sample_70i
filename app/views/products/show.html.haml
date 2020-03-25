@@ -16,7 +16,7 @@
           =image_tag image.image.url, class: "content-images__list"
       .price-content
         .price-content__price
-          %span
+          %span 
             = "¥ #{@product.price}"
         .price-content__info
           %span (税込み)
@@ -43,11 +43,11 @@
         %tr
           %td.content-info__name カテゴリー
           %td.content-info__text
-            =link_to @product.categories[0].name, category_path(@product.categories[0].id)
+            =link_to @product.category.root.name, category_path(@product.category.root_id)
             %br
-            =link_to @product.categories[1].name, category_path(@product.categories[1].id)
+            =link_to @product.category.parent.name, category_path(@product.category.parent_id)
             %br
-            =link_to @product.categories[2].name, category_path(@product.categories[2].id)
+            =link_to @product.category.name, category_path(@product.category.id)
         %tr
           %td.content-info__name ブランド
           %td.content-info__text
@@ -101,7 +101,7 @@
         %li.next-product
           =link_to "後ろの商品 &gt;".html_safe, product_path(@product.next)
     .more-link
-      =link_to "#{@product.categories[0].name}をもっと見る", category_path(@product.categories[0].id)
+      =link_to "#{@product.category.root.name}をもっと見る", category_path(@product.category.root_id)
 
 -# フッター
 =render "shared/main_footer"
