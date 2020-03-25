@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'product_users/create'
-  get 'product_users/destroy'
+
   devise_for :users,
     controllers: { registrations: 'users/registrations' }
     get "users/show" => "users#show"
