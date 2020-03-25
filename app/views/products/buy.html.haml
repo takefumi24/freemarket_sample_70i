@@ -45,6 +45,7 @@
               = "〒 #{@user.postal_code.to_s.insert(3, "-")}"
               %br
               = "#{@prefecture.name} #{@user.city} #{@user.street} #{@user.building}"
+              = "#{@user.destination_family_name} #{@user.destination_name}"
           - if @credit_card.present?
             = link_to "購入する", done_product_purchase_path(@product.id), class:"buy-button check"
           - else
