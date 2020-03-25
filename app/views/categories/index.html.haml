@@ -4,7 +4,9 @@
 -# メイン
 .category-index
   .container
-    %h2 カテゴリー一覧
+    - breadcrumb :category_index
+    = render "layouts/breadcrumbs"
+    %h2.bold-text カテゴリー一覧
     .main-category-links
       - @main_categories.each do |category|
         = link_to category.name, { anchor: "category-#{category.id}" }, class: 'main-category-link'

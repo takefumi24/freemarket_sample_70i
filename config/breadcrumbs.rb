@@ -8,6 +8,23 @@ crumb :mypage do
   link "マイページ", users_show_path
 end
 
+# 商品詳細画面
+crumb :show_product do
+  link "商品詳細", product_path
+  parent :root
+end
+
+# カテゴリー一覧
+crumb :category_index do
+  link "カテゴリー一覧", category_index_path
+end
+
+# カテゴリー詳細
+crumb :category_show do
+  link "カテゴリー詳細", category_path
+  parent :category_index
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
