@@ -49,6 +49,9 @@ Things you may want to cover:
 - has_one :credit_card
 - has_many :comments
 - accepts_nested_attributes_for :profile
+- has_many :products, dependent: :destroy
+- has_many :product_users, dependent: :destroy
+- has_many :puroducts, through: :product_users, source: :product_id
 
 
 # productsテーブル
@@ -80,6 +83,8 @@ Things you may want to cover:
 - belongs_to :size
 - belongs_to :condition
 - belongs_to :sending_method
+- has_many :product_users, dependent: :destroy
+- has_many :product, through: :product_users, source: :user_id
 
 
 # category_productsテーブル
@@ -161,3 +166,13 @@ Things you may want to cover:
 
 ### Association
 - has_many :products
+
+# product_usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :product

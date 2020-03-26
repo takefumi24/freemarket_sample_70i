@@ -15,6 +15,8 @@ class Product < ApplicationRecord
   belongs_to :condition
   belongs_to :sending_method
   belongs_to :user
+  has_many :product_users, dependent: :destroy
+  has_many :product, through: :product_users, source: :user_id
 
   enum delivery_status: [ "出品中", "取引中", "購入済" ]
 
@@ -35,4 +37,10 @@ class Product < ApplicationRecord
       errors.add(:categories, "の内容が不正です")
     end
   end
+
+  # ユーザーがいいね済みか判定
+  def like_by?(user)
+    product_users.where(user_id: user.id).exists?
+  end
+  
 end

@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # 新規登録のストロングパラメータ
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:id, :nickname, :password, :password_confirmation, :email, :family_name, :name, :family_name_kana, :name_kana,:prefecture, :city, :street, :building, :postal_code, :phone, :birth_year, :birth_month, :birth_day])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:id, :nickname, :password, :password_confirmation, :email, :family_name, :name, :family_name_kana, :name_kana, :destination_family_name, :destination_name, :destination_family_name_kana, :destination_name_kana, :prefecture, :city, :street, :building, :postal_code, :phone, :birth_year, :birth_month, :birth_day])
     # 会員情報変更のストロングパラメータ
-    devise_parameter_sanitizer.permit(:account_update, keys: [:id, :nickname, :email, :family_name, :name, :family_name_kana, :name_kana,:prefecture, :city, :street, :building, :postal_code])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:id, :nickname, :email, :family_name, :name, :family_name_kana, :name_kana, :destination_family_name, :destination_name, :destination_family_name_kana, :destination_name_kana, :prefecture, :city, :street, :building, :postal_code])
   end
 
   def production?
