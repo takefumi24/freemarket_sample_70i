@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+
   devise_for :users,
     controllers: { registrations: 'users/registrations' }
     get "users/show" => "users#show"
 
   root "products#index"
   resources :products, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resource :product_users, only:[:create, :destroy]
     member do
       get 'buy'
     end
