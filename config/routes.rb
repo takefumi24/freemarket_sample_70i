@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root "products#index"
   resources :products, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resource :product_users, only:[:create, :destroy]
     member do
       get 'buy'
     end

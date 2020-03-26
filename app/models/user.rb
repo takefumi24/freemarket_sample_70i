@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  has_many :products, dependent: :destroy
+  has_many :product_users, dependent: :destroy
+  has_many :puroducts, through: :product_users, source: :product_id
+  
   has_one :credit_card
 
   validates :nickname,                     presence: true, length: { in: 1..20 }, uniqueness: true
