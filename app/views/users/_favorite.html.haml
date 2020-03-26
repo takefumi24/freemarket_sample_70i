@@ -1,6 +1,18 @@
 .favorite
   .title
-    いいね！一覧
+    お気に入り一覧
   %ul.facorite-list
-    %li
-      いいねがありません
+    - if @likes.blank?
+      %li.facorite-list__item-none
+        お気に入りがありません
+    - else 
+      - @likes.each do |like|
+        %li.facorite-list__item
+          =link_to product_path(like.product_id) do
+            = image_tag like.product.images[0].image_url
+            .item-text
+              %p
+                = like.product.name
+              %p
+                = "¥#{like.product.price}"
+            =icon("fas", "chevron-right") 
