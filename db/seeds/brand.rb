@@ -1,3 +1,4 @@
+Brand.create(name: "なし")
 Brand.create(name: "シャネル")
 Brand.create(name: "グッチ")
 Brand.create(name: "ルイヴィトン")

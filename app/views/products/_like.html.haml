@@ -1,9 +1,0 @@
-
-- if @product.like_by?(current_user)
-  = link_to product_product_users_path(@product.id), method: :delete, remote: true do
-    = icon('fas', 'star', "お気に入り", id: "likeIconActive")
-    =@product.product_users.count
--else 
-  =link_to product_product_users_path(@product.id), method: :post, remote: true do
-    = icon('far', 'star', "お気に入り", id: "likeIcon")
-    =@product.product_users.count

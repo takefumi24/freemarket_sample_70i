@@ -227,6 +227,28 @@
   }
 }
 
+// いいね！一覧
+.favorite {
+  padding: 5px;
+  background-color: white;
+  border-top: 2px solid red;
+  & .title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+  }
+  & ul {
+    height: 200px;
+    & li {
+      text-align: center;
+      line-height: 100px;
+      color: rgb(161, 149, 149);
+    }
+  }
+}
+
 // 支払い方法
 .mypage-card {
   background-color: white;
