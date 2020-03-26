@@ -1,7 +1,8 @@
 -# ヘッダー
-=render "shared/main_header"
-
+= render "shared/main_header"
 .mypage.clearfix
+  - breadcrumb :mypage
+  = render "layouts/breadcrumbs"
   .my-content
     %ul.sideber-contents
       %li#content1.sideActive

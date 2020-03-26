@@ -4,6 +4,8 @@
 -# メイン
 .category-page
   .container
+    - breadcrumb :category_show
+    = render "layouts/breadcrumbs"
     .child-links
       - @children.each do |child|
         = link_to child.name, category_path(child.id), class: 'child-link'

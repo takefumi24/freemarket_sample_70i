@@ -3,6 +3,8 @@
 =render "shared/main_header"
 -# メイン
 .show-container
+  - breadcrumb :show_product
+  = render "layouts/breadcrumbs"
   .show-content
     .show-content-wrapper
       %h2.content-heading
