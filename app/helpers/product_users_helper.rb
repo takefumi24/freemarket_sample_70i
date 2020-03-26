@@ -1,2 +1,0 @@
-module ProductUsersHelper
-end

@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   
   def show
     @user = current_user
-    @likes = ProductUser.where(user_id: @user.id).order(id: "ASC")
     card = CreditCard.where(user_id: current_user.id).first
     if card.blank?
     else
