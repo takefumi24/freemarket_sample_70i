@@ -63,7 +63,6 @@ Things you may want to cover:
 |delivery_status|integer|null: false|
 |prefecture|integer|null: false|
 |brand_id|references|foreign_key: true|
-|category_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
 |size_id|references|foreign_key: true|
 |condition_id|references|null: false, foreign_key: true|
