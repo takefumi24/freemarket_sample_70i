@@ -71,24 +71,26 @@ Things you may want to cover:
 
 ### Association
 - has_many :images
+- accepts_nested_attributes_for :images, allow_destroy: true
 - has_many :comments
+- has_many :category_products, dependent: :destroy
+- has_many :categories, through: :category_products
 - belongs_to :user
-- belongs_to :category
 - belongs_to :brand
 - belongs_to :size
 - belongs_to :condition
 - belongs_to :sending_method
 
 
-# credit_cardsテーブル
+# category_productsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
-|customer_id|string|null: false|
-|card_id|string|null: false|
+|category_id|integer|foreign_key: true|
+|product_id|integer|foreign_key: true|
 
 ### Association
-- belongs_to :user
+- belongs_to :category
+- belongs_to :product
 
 
 # brandsテーブル
@@ -109,9 +111,8 @@ Things you may want to cover:
 |ancestry|string|-------|
 
 ### Association
-- has_many :products
-- has_many :brands, through: :category_brands
-- has_many :category_brands
+- has_many :products, through: :category_products
+- has_many :category_products
 
 
 # category_brandテーブル
