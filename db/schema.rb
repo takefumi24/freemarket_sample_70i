@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_120930) do
+ActiveRecord::Schema.define(version: 2020_03_26_080139) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 2020_03_19_120930) do
     t.index ["product_id"], name: "index_images_on_product_id"
   end
 
+  create_table "product_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_users_on_product_id"
+    t.index ["user_id", "product_id"], name: "index_product_users_on_user_id_and_product_id", unique: true
+    t.index ["user_id"], name: "index_product_users_on_user_id"
+  end
+
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "detail", null: false
@@ -109,6 +119,10 @@ ActiveRecord::Schema.define(version: 2020_03_19_120930) do
     t.string "name", null: false
     t.string "family_name_kana", null: false
     t.string "name_kana", null: false
+    t.string "destination_family_name", null: false
+    t.string "destination_name", null: false
+    t.string "destination_family_name_kana", null: false
+    t.string "destination_name_kana", null: false
     t.integer "prefecture", null: false
     t.string "city", null: false
     t.string "street", null: false
@@ -134,6 +148,8 @@ ActiveRecord::Schema.define(version: 2020_03_19_120930) do
   add_foreign_key "category_products", "categories"
   add_foreign_key "category_products", "products"
   add_foreign_key "images", "products"
+  add_foreign_key "product_users", "products"
+  add_foreign_key "product_users", "users"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "conditions"
   add_foreign_key "products", "sending_methods"

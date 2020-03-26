@@ -5,6 +5,10 @@
     width: 700px;
     margin: 0 auto;
     padding: 40px 0;
+    .bold-text {
+      font-weight: bold;
+      padding: 10px 0;
+    }
     .main-category-links {
       display: flex;
       flex-wrap: wrap;

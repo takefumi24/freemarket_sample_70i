@@ -6,7 +6,7 @@
 
 .mypage {
   width: 1020px;      /* 追加 */
-  margin: 40px auto 0;    /* 追加 */
+  margin: 0 auto;    /* 追加 */
   padding: 0 0 40px;
   .my-content {
     float: right;
@@ -224,28 +224,6 @@
     margin: 0 auto;
     background-color: #48d1cc;
     color: white;
-  }
-}
-
-// いいね！一覧
-.favorite {
-  padding: 5px;
-  background-color: white;
-  border-top: 2px solid red;
-  & .title {
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 60px;
-    text-align: center;
-    border-bottom: 1px solid lightgray;
-  }
-  & ul {
-    height: 200px;
-    & li {
-      text-align: center;
-      line-height: 100px;
-      color: rgb(161, 149, 149);
-    }
   }
 }
 
